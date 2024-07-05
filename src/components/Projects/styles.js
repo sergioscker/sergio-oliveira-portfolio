@@ -15,7 +15,7 @@ export const ContainerProject = styled.div`
       align-items: center;
       width: 19rem;
       height: 30rem;
-      margin: 1rem;
+      margin: 3rem;
       color: #fff;
       background-color: #011627;
       -webkit-box-shadow: 0px -2px 34px 1px rgba(0, 0, 0, 0.55);
@@ -45,7 +45,7 @@ export const ContainerProject = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 2rem;
+      gap: 1.5rem;
       margin-top: 1rem;
   };
 

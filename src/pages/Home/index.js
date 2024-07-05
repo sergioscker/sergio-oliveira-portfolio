@@ -33,7 +33,7 @@ export function Home() {
 
       <H1>
         Sérgio Oliveira
-        <h2>Developer Full-Stack</h2>
+        <div>Developer Full-Stack</div>
       </H1>
 
       <div>

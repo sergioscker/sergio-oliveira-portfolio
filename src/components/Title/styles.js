@@ -15,7 +15,7 @@ export const H1 = styled.h1`
     padding: 15px;
     color: #fff;
 
-    h2 {
+    div {
         font-size: 2rem;
         text-align: center;
     };
