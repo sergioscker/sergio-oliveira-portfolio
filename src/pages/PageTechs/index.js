@@ -11,7 +11,7 @@ import {
 } from 'react-icons/io5';
 
 import { FaGitAlt } from 'react-icons/fa6';
-import { TbBrandVite } from 'react-icons/tb';
+import { TbBrandVite, TbBrandTypescript } from 'react-icons/tb';
 
 import { ContainerTools } from './styles';
 import { useWindowSizeIcons } from '../../components/useWindowSizeicons/useWindowSizeicon';
@@ -26,6 +26,7 @@ export const PageTechs = () => {
     { icon: <IoLogoHtml5 size={iconSize} />, name: "Html5" },
     { icon: <IoLogoCss3 size={iconSize} />, name: "Css3" },
     { icon: <IoLogoNodejs size={iconSize} />, name: "Nodejs" },
+    { icon: <TbBrandTypescript size={iconSize} />, name: "TypeScript" },
     { icon: <IoLogoReact size={iconSize} />, name: "React" },
     { icon: <IoLogoReact size={iconSize} />, name: "React Native" },
     { icon: <TbBrandVite size={iconSize} />, name: "Vite" },

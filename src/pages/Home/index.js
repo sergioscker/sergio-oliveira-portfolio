@@ -60,7 +60,7 @@ export function Home() {
         </div>
 
         <div className='developer'>
-          <p>&copy Desenvolvido por Sérgio Oliveira.</p>
+          <p> © Desenvolvido por Sérgio Oliveira.</p>
         </div>
       </Footer>
     </ContainerMain >
