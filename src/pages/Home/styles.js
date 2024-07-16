@@ -10,7 +10,7 @@ export const ContainerMain = styled.div`
 
 export const Header = styled.header`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
   padding: 18px;
@@ -24,9 +24,13 @@ export const Header = styled.header`
   }
 
   a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 25px;
     font-weight: 600;
     color: #68a9ff;
+    text-align: center;
     text-decoration: none;
 
     &:hover {
@@ -37,10 +41,12 @@ export const Header = styled.header`
   }
 
   @media (max-width: 500px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
 
     img {
       display: none;
@@ -107,6 +113,7 @@ export const Footer = styled.footer`
   }
 
   .developer {
+    text-align: center;
     color: #fff;
     font-size: 1.3rem;
     font-weight: bold;
