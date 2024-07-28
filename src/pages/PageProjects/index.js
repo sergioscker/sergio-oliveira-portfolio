@@ -82,7 +82,7 @@ export const PageProjects = () => {
         description=""
         hrefProject="https://users-office.vercel.app/"
         hrefCode="https://github.com/sergioliveira-developer/Users-Office"
-        techs={techData[1]}
+        techs={techData[2]}
       />,
 
       <Projects
