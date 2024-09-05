@@ -1,16 +1,16 @@
-import MarioBross from '../../assets/mario-bross.png';
-import ConverterCoins from '../../assets/convert-money.png';
-import JoKenPo from '../../assets/jo-ken-po.png';
-import UsersOffice from '../../assets/users-office.png';
-import MenuBurgers from '../../assets/map-reduce-filter.png';
-import EasyShopping from '../../assets/easy-shopping.png';
-import DevBurger from '../../assets/dev-burger.png';
+import MarioBross from "../../assets/mario-bross.png";
+import ConverterCoins from "../../assets/convert-money.png";
+import JoKenPo from "../../assets/jo-ken-po.png";
+import UsersOffice from "../../assets/users-office.png";
+import MenuBurgers from "../../assets/map-reduce-filter.png";
+import EasyShopping from "../../assets/easy-shopping.png";
+import DevBurger from "../../assets/dev-burger.png";
+import TechSolution from "../../assets/tech-solutions.png";
+import DevBills from "../../assets/dev-bills.png";
 
-import { Projects } from '../../components/Projects';
+import { Projects } from "../../components/Projects";
 
-import {
-  Container,
-} from './styles';
+import { Container } from "./styles";
 
 import {
   IoLogoJavascript,
@@ -18,10 +18,9 @@ import {
   IoLogoCss3,
   IoLogoReact,
   IoLogoDocker,
-} from 'react-icons/io5';
+} from "react-icons/io5";
 
-import { TbBrandMongodb } from 'react-icons/tb';
-
+import { TbBrandMongodb, TbBrandTypescript } from "react-icons/tb";
 
 const techData = [
   [
@@ -32,7 +31,6 @@ const techData = [
   [
     { icon: <IoLogoJavascript size={40} /> },
     { icon: <IoLogoReact size={40} /> },
-    { icon: <IoLogoCss3 size={40} /> },
     { icon: <IoLogoHtml5 size={40} /> },
   ],
   [
@@ -41,13 +39,18 @@ const techData = [
     { icon: <IoLogoReact size={40} /> },
     { icon: <IoLogoDocker size={40} /> },
     { icon: <IoLogoHtml5 size={40} /> },
+  ],
 
+  [
+    { icon: <IoLogoJavascript size={40} /> },
+    { icon: <IoLogoHtml5 size={40} /> },
+    { icon: <TbBrandMongodb size={40} /> },
+    { icon: <TbBrandTypescript size={40} /> },
   ],
 ];
 
 export const PageProjects = () => {
   return (
-
     <Container>
       <Projects
         src={MarioBross}
@@ -56,8 +59,8 @@ export const PageProjects = () => {
         hrefProject="https://mariobross-three.vercel.app/"
         hrefCode="https://github.com/sergioliveira-developer/Mario-Bross"
         techs={techData[0]}
-      />,
-
+      />
+      ,
       <Projects
         src={ConverterCoins}
         name="Convert Money"
@@ -65,8 +68,8 @@ export const PageProjects = () => {
         hrefProject="https://converter-coins.vercel.app/"
         hrefCode="https://github.com/sergioliveira-developer/Convert-Money"
         techs={techData[0]}
-      />,
-
+      />
+      ,
       <Projects
         src={JoKenPo}
         name="Game JoKenPô"
@@ -74,17 +77,17 @@ export const PageProjects = () => {
         hrefProject="https://project-jo-ken-po.vercel.app/"
         hrefCode="https://github.com/sergioliveira-developer/Game-Jokenpo"
         techs={techData[0]}
-      />,
-
+      />
+      ,
       <Projects
         src={UsersOffice}
         name="Users Office"
         description=""
         hrefProject="https://users-office.vercel.app/"
         hrefCode="https://github.com/sergioliveira-developer/Users-Office"
-        techs={techData[2]}
-      />,
-
+        techs={techData[1]}
+      />
+      ,
       <Projects
         src={MenuBurgers}
         name="Burgers"
@@ -92,8 +95,8 @@ export const PageProjects = () => {
         hrefProject="https://sergioliveira-developer.github.io/Ementa-Burger/"
         hrefCode="https://github.com/sergioliveira-developer/Ementa-Burger"
         techs={techData[0]}
-      />,
-
+      />
+      ,
       <Projects
         src={EasyShopping}
         name="Easy Shopping"
@@ -101,8 +104,8 @@ export const PageProjects = () => {
         hrefProject="https://easy-shopping-pied.vercel.app/"
         hrefCode="https://github.com/sergioliveira-developer/Easy-Shopping"
         techs={techData[0]}
-      />,
-
+      />
+      ,
       <Projects
         src={DevBurger}
         name="DevBurger"
@@ -111,6 +114,22 @@ export const PageProjects = () => {
         hrefCode="https://github.com/sergioliveira-developer/DevBurger"
         techs={techData[2]}
       />
+      <Projects
+        src={TechSolution}
+        name="Tech Solution"
+        description=""
+        hrefProject="https://tech-solutions-kappa.vercel.app/"
+        hrefCode="https://github.com/sergioliveira-developer/tech-solutions"
+        techs={techData[1]}
+      />
+      <Projects
+        src={DevBills}
+        name="Dev Bills"
+        description=""
+        hrefProject=""
+        hrefCode="https://github.com/sergioliveira-developer/dev-bills"
+        techs={techData[3]}
+      />
     </Container>
-  )
+  );
 };

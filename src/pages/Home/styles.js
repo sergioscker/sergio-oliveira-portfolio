@@ -56,7 +56,6 @@ export const Header = styled.header`
 
 export const ContainerImage = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 8px;
