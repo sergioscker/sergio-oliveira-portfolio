@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -6,12 +6,11 @@ export const Container = styled.div`
   justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
-  padding-top: 3rem;
+  padding: 56px 0;
 
   @media screen and (max-width: 770px) {
     img {
       display: block;
-    };
-  };
+    }
+  }
 `;
-

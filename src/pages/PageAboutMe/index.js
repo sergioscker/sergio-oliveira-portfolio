@@ -1,38 +1,44 @@
-import { ContainerAbout } from "./styles";
+import { MainContainer } from "../Home/styles";
+import { AboutContainer } from "./styles";
 
 export const PageAboutMe = () => {
   return (
-    <ContainerAbout>
-      <div>
-        <h5 className="text">
-          Olá, 👋 me chamo Sérgio Oliveira! Minha trajetória é marcada pela
-          aplicação das tecnologias mais atuais, para criar soluções de alta
-          qualidade, como: JavaScript, ReactJS, TypeScript, HTML5, CSS3, entre
-          outras.
-          <br />
-        </h5>
+    <AboutContainer>
+      <MainContainer>
+        <div>
+          <h1>About me</h1>
 
-        <h5 className="text">
-          Atuo como Desenvolvedor Full-Stack em projetos Freelance, entregando
-          resultados de excelência. Além disso, contribuo em alguns segmentos,
-          incluindo desenvolvimento, auxílio em atividades de testes e
-          manutenção para garantia de qualidade de software. Adicionalmente,
-          estou continuamente me aprimorando e atualizando meus conhecimentos
-          para garantir que minhas habilidades estejam sempre alinhadas com as
-          mais recentes tendências tecnológicas da indústria.
-          <br />
-        </h5>
+          <h5 className="text">
+            Olá, sou Sérgio Oliveira, um entusiasta de tecnologia em início de
+            carreira como Desenvolvedor de Software. Brasileiro, que há 2 anos
+            trocou o clima quente do Rio de Janeiro pelo inverno Europeu. Embora
+            ainda esteja dando meus primeiros passos nesse universo, minha
+            paixão por aprender e superar desafios é o que me impulsiona todos
+            os dias.
+          </h5>
 
-        <h5 className="text">
-          Estou comprometido com o aprendizado contínuo e o aprimoramento das
-          minhas habilidades técnicas como desenvolvedor. Busco constantemente
-          novos conhecimentos e técnicas em cursos online, workshops e eventos
-          da área, também faço parte de comunidades de desenvolvedores, onde
-          posso compartilhar experiências, aprender com outros profissionais e
-          contribuir para o crescimento coletivo.
-          <br />
-        </h5>
-      </div>
-    </ContainerAbout>
+          <h5 className="text">
+            Recentemente, comecei a explorar o mundo do desenvolvimento web, com
+            foco em <span>JavaScript, React.js e Node.js</span>. Estou constantemente em
+            busca de novos conhecimentos e adoro mergulhar em projetos que me
+            façam sair da zona de conforto, pois acredito que é através dos
+            desafios que realmente crescemos e nos tornamos melhores
+            profissionais. Nos últimos meses, desenvolvi alguns projetos no
+            GitHub que me ajudaram a aplicar na prática os conceitos que venho
+            estudando. Um deles foi este portfólio pessoal, onde criei todo o
+            código utilizando ReactJS, demonstrando minha capacidade de
+            construir interfaces modernas e responsivas.
+          </h5>
+
+          <h5 className="text">
+            Tenho me dedicado bastante em projetos com ênfase na rotina
+            profissional de um programador no mercado de trabalho para alcançar
+            uma oportunidade de demonstrar com trabalho árduo o quanto posso
+            evoluir ainda mais meus conhecimentos e colaborar como equipe numa
+            empresa.
+          </h5>
+        </div>
+      </MainContainer>
+    </AboutContainer>
   );
 };

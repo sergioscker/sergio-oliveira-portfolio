@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const ContainerProject = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 190px);
-  gap: 1em;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   align-items: center;
+  justify-content: center;
+  grid-auto-rows: 1fr; // Faz com que todas as linhas tenham o mesmo tamanho
+  align-items: stretch; // Garante que os cards estiquem para o mesmo tamanho
 
   .cards {
     display: flex;
@@ -62,7 +63,8 @@ export const ContainerProject = styled.div`
     font-size: 0.7rem;
 
     &:hover {
-      border: 1px solid #858484;
+      transition: all 300ms;
+      border: 1px solid #68a9ff;
     }
   }
 
@@ -71,7 +73,8 @@ export const ContainerProject = styled.div`
     text-decoration: none;
 
     &:hover {
-      color: #989696;
+      transition: all 300ms;
+      color: #68a9ff;
     }
   }
 `;

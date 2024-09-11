@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -7,10 +7,19 @@ const GlobalStyles = createGlobalStyle`
       padding: 0;
       box-sizing: border-box;
       font-family: "Poppins", sans-serif;
-      outline: none;
       cursor: pointer;
 };  
 
+#root {
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+
+  body {
+    background: linear-gradient(180deg, #171717 0%, #011627 100%);
+    -webkit-font-smoothing: antialiased;
+    padding-top: 100px;
+  }
 `;
 
 export default GlobalStyles;

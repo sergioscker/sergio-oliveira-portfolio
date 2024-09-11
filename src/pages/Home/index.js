@@ -1,62 +1,152 @@
+import { Link, Element } from "react-scroll";
+
 import PhotoProfire from "../../assets/profire-photo.png";
-import Github from "../../assets/logo-github.svg";
-import LinkedIn from "../../assets/logotipo-do-linkedin.png";
-import WhatsApp from "../../assets/whatsapp.png";
+
+import { IoLogoLinkedin, IoLogoGithub, IoLogoWhatsapp } from "react-icons/io5";
 
 import H1 from "../../components/Title";
+import { useWindowSizeIcons } from "../../components/windowSizeIcons";
 import { PageAboutMe } from "../PageAboutMe";
 import { PageProjects } from "../PageProjects";
 import { PageTechs } from "../PageTechs";
 
-import { ContainerMain, Header, Footer } from "./styles";
+import HomeDark from "../../assets/homeDark.png";
+import SergioResume from "../../assets/sergio-resume.pdf";
+
+import {
+  Header,
+  Footer,
+  TopContainer,
+  Section,
+  HeaderContainer,
+} from "./styles";
 
 export function Home() {
+  const { width } = useWindowSizeIcons();
+  const iconSize = width > 768 ? 32 : 32;
+
   return (
-    <ContainerMain>
-      <Header>
-        <div>
-          <img src={PhotoProfire} alt="profire" />
-        </div>
+    <>
+      <HeaderContainer>
+        <Header>
+          <Link to="home" smooth={true} duration={500} offset={-100}>
+            <div className="logo">
+              <img src={PhotoProfire} alt="profire" />
+            </div>
+          </Link>
 
-        <a href="https://www.linkedin.com/in/sergioliveira-developer/">
-          LinkedIn
-        </a>
-        <a href="https://github.com/sergioliveira-developer">GitHub</a>
-        <a href="#projects">Projects</a>
-      </Header>
+          <nav className="links-content">
+            <ul>
+              <li>
+                <Link to="home" smooth={true} duration={500} offset={-100}>
+                  HOME
+                </Link>
+              </li>
 
-      <H1>
-        Sérgio Oliveira
-        <div>Developer Full-Stack</div>
-      </H1>
+              <li>
+                <Link to="aboutme" smooth={true} duration={500} offset={-100}>
+                  ABOUT ME
+                </Link>
+              </li>
 
-      <div>
-        <PageProjects />
-      </div>
+              <li>
+                <Link to="projects" smooth={true} duration={500} offset={-100}>
+                  PROJECTS
+                </Link>
+              </li>
 
-      <PageTechs />
+              <li>
+                <Link to="contact" smooth={true} duration={500} offset={-100}>
+                  SKILLS
+                </Link>
+              </li>
+            </ul>
+          </nav>
 
-      <PageAboutMe />
+          <div>
+            <a href={SergioResume} className="download-cv">
+              Download Resume
+            </a>
+          </div>
+        </Header>
+      </HeaderContainer>
 
-      <Footer>
-        <div className="links-footer">
-          <a href="https://www.linkedin.com/in/sergioliveira-developer/">
-            <img src={LinkedIn} alt="logo-linkedIn" className="social-media" />
-          </a>
+      {/* Seção HOME */}
+      <Element name="home">
+        <TopContainer>
+          <div className="top-content">
+            <H1>Software Developer</H1>
 
-          <a href="https://wa.link/up0k32">
-            <img src={WhatsApp} alt="logo-whatsapp" className="social-media" />
-          </a>
+            <div className="top-links">
+              <a href="https://pt.linkedin.com/in/sergioliveiira">
+                <div className="social-media">
+                  <IoLogoLinkedin className="icons" size={iconSize} />
+                </div>
+              </a>
 
-          <a href="https://github.com/sergioliveira-developer">
-            <img src={Github} alt="logo-github" className="social-media" />
-          </a>
-        </div>
+              <a href="https://wa.link/up0k32">
+                <div className="social-media">
+                  <IoLogoWhatsapp className="icons" size={iconSize} />
+                </div>
+              </a>
 
-        <div className="developer">
-          <p> © Desenvolvido por Sérgio Oliveira.</p>
-        </div>
-      </Footer>
-    </ContainerMain>
+              <a href="https://github.com/sergioscker">
+                <div className="social-media">
+                  <IoLogoGithub className="icons" size={iconSize} />
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <img src={HomeDark} alt="icon" />
+          </div>
+        </TopContainer>
+      </Element>
+
+      {/* Seção ABOUT ME */}
+      <Element name="aboutme">
+        <Section>
+          <PageAboutMe />
+        </Section>
+      </Element>
+
+      {/* Seção PROJECTS */}
+      <Element name="projects">
+        <Section>
+          <PageProjects />
+        </Section>
+      </Element>
+
+      <Element name="contact">
+        <PageTechs />
+
+        <Footer>
+          <div className="developer">
+            <div className="top-links">
+              <a href="https://pt.linkedin.com/in/sergioliveiira">
+                <div className="social-media">
+                  <IoLogoLinkedin className="icons" size={iconSize} />
+                </div>
+              </a>
+
+              <a href="https://wa.link/up0k32">
+                <div className="social-media">
+                  <IoLogoWhatsapp className="icons" size={iconSize} />
+                </div>
+              </a>
+
+              <a href="https://github.com/sergioscker">
+                <div className="social-media">
+                  <IoLogoGithub className="icons" size={iconSize} />
+                </div>
+              </a>
+            </div>
+
+            <p> ©2024 Developed by Sérgio Oliveira.</p>
+          </div>
+        </Footer>
+      </Element>
+    </>
   );
 }
