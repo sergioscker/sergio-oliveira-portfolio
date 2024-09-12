@@ -14,7 +14,7 @@ import { FaGitAlt } from "react-icons/fa6";
 import { TbBrandVite, TbBrandTypescript } from "react-icons/tb";
 
 import { ContainerTools } from "./styles";
-import { useWindowSizeIcons } from "../../components/useWindowSizeicons/useWindowSizeicon";
+import { useWindowSizeIcons } from "../../components/windowSizeIcons";
 import { MainContainer } from "../Home/styles";
 
 export const PageTechs = () => {

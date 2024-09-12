@@ -1,6 +1,5 @@
 import { Link, Element } from "react-scroll";
-
-import PhotoProfire from "../../assets/profire-photo.png";
+import { useState } from "react";
 
 import { IoLogoLinkedin, IoLogoGithub, IoLogoWhatsapp } from "react-icons/io5";
 
@@ -10,6 +9,7 @@ import { PageAboutMe } from "../PageAboutMe";
 import { PageProjects } from "../PageProjects";
 import { PageTechs } from "../PageTechs";
 
+import PhotoProfire from "../../assets/profire-photo.png";
 import HomeDark from "../../assets/homeDark.png";
 import SergioResume from "../../assets/sergio-resume.pdf";
 
@@ -25,8 +25,22 @@ export function Home() {
   const { width } = useWindowSizeIcons();
   const iconSize = width > 768 ? 32 : 32;
 
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
+  const navLinks = [
+    { name: "HOME", to: "home" },
+    { name: "ABOUT ME", to: "aboutme" },
+    { name: "PROJECTS", to: "projects" },
+    { name: "SKILLS", to: "contact" },
+  ];
+
   return (
     <>
+      {/* Header Section */}
       <HeaderContainer>
         <Header>
           <Link to="home" smooth={true} duration={500} offset={-100}>
@@ -35,31 +49,15 @@ export function Home() {
             </div>
           </Link>
 
-          <nav className="links-content">
+          <nav className={`links-content ${isMenuOpen ? "open" : ""}`}>
             <ul>
-              <li>
-                <Link to="home" smooth={true} duration={500} offset={-100}>
-                  HOME
-                </Link>
-              </li>
-
-              <li>
-                <Link to="aboutme" smooth={true} duration={500} offset={-100}>
-                  ABOUT ME
-                </Link>
-              </li>
-
-              <li>
-                <Link to="projects" smooth={true} duration={500} offset={-100}>
-                  PROJECTS
-                </Link>
-              </li>
-
-              <li>
-                <Link to="contact" smooth={true} duration={500} offset={-100}>
-                  SKILLS
-                </Link>
-              </li>
+              {navLinks.map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to} smooth={true} duration={500} offset={-100}>
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
 
@@ -68,6 +66,8 @@ export function Home() {
               Download Resume
             </a>
           </div>
+
+          <div className="hamburger-menu" onClick={handleMenuToggle}></div>
         </Header>
       </HeaderContainer>
 
@@ -118,9 +118,9 @@ export function Home() {
         </Section>
       </Element>
 
+      {/* Seção SKILLS / CONTACT */}
       <Element name="contact">
         <PageTechs />
-
         <Footer>
           <div className="developer">
             <div className="top-links">
