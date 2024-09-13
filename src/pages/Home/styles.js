@@ -10,8 +10,6 @@ const theme = {
   iconSize: "55px",
   borderRadius: "24px",
   maxWidth: "1400px",
-  imagePadding: "16px", // Padding para imagem no TopContainer
-  hamburgerSize: "24px", // Tamanho do ícone do menu de hambúrguer
 };
 
 // Media Queries para telas grandes, médias e pequenas
@@ -27,7 +25,7 @@ export const MainContainer = styled.div`
   max-width: ${theme.maxWidth};
   width: 100%;
   padding: 0 32px;
-  margin: 0 auto; // Centraliza o container
+  margin: 0 auto;
   z-index: 1;
 `;
 
@@ -35,69 +33,77 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  padding: ${theme.spacing};
+  margin-bottom: ${theme.iconSize};
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Adicionando sombra para destacar o header
 `;
 
 export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${theme.darkColor};
-  padding: ${theme.spacing};
-  position: fixed;
   width: 100%;
-  z-index: 50;
-  border-radius: ${theme.borderRadius};
   max-width: ${theme.maxWidth};
+  background-color: ${theme.darkColor};
+  border-radius: ${theme.borderRadius};
+  padding: ${theme.spacing};
   margin: 0 auto;
 
   .logo img {
     width: ${theme.iconSize};
     height: ${theme.iconSize};
     border-radius: 50%;
-  }
 
-  .links-content {
-    display: flex;
-    gap: 20px;
-    transition: all 0.3s ease;
-
-    ul {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-
-      li {
-        font-size: 1rem;
-        font-weight: bold;
-        color: ${theme.lightColor};
-
-        a {
-          color: inherit;
-          text-decoration: none;
-          font-size: 16px;
-
-          &:hover {
-            color: ${theme.primaryColor};
-            transition: color 0.3s ease;
-          }
-        }
-      }
+    ${device.small} {
+      display: none; /* Oculta a foto de perfil em telas pequenas */
     }
   }
 
-  .hamburger-menu {
-    display: none;
+  ${device.small} {
     flex-direction: column;
-    cursor: pointer;
-    gap: 4px;
+    align-items: center;
 
-    div {
-      background-color: ${theme.lightColor};
-      height: ${theme.hamburgerSize};
-      width: ${theme.hamburgerSize};
-      border-radius: 3px;
+    .links-content {
+      display: none;
+    }
+  }
+`;
+
+// Ícone de hambúrguer para menu em telas pequenas
+export const HamburgerIcon = styled.div`
+  display: none;
+  cursor: pointer;
+
+  ${device.small} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+`;
+
+// Estilos para os links de navegação (menu lateral flexbox para telas pequenas)
+export const NavLinks = styled.ul`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+
+  li {
+    font-size: 1rem;
+    font-weight: bold;
+    color: ${theme.lightColor};
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      font-size: 16px;
+
+      &:hover {
+        color: ${theme.primaryColor};
+        transition: color 0.3s ease;
+      }
     }
   }
 
@@ -117,38 +123,25 @@ export const Header = styled.header`
     }
   }
 
+  /* Menu adaptativo para telas pequenas */
   ${device.small} {
+    display: ${({ isopen }) => (isopen ? "flex" : "none")};
     flex-direction: column;
-    padding: 16px;
+    align-items: center;
+    gap: 20px;
+    background-color: ${theme.darkColor};
+    width: 100%;
+    padding: 20px 0;
 
-    .logo {
-      display: none;
+    li {
+      font-size: 1.5rem;
     }
 
-    .links-content {
-      display: ${(props) => (props.isMenuOpen ? "flex" : "none")};
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-
-      ul {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-
-        li {
-          font-size: 14px;
-        }
+    .download-cv {
+      &:hover {
+        background-color: ${theme.primaryColor};
+        color: ${theme.darkColor};
       }
-
-      .download-cv {
-        margin-top: 10px;
-        font-size: 14px;
-      }
-    }
-
-    .hamburger-menu {
-      display: flex;
     }
   }
 `;
@@ -157,11 +150,11 @@ export const TopContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: ${theme.spacing};
+  gap: 20px;
   width: 100%;
   max-width: ${theme.maxWidth};
-  margin: 0 auto; // Centraliza o container
-  padding: ${theme.imagePadding} 0; // Adiciona padding para evitar que a imagem encoste nas bordas
+  padding: 60px 0;
+  margin: 0 auto;
 
   .top-content {
     display: flex;
@@ -174,7 +167,7 @@ export const TopContainer = styled.div`
       gap: ${theme.spacing};
 
       a {
-        color: #fff;
+        color: ${theme.lightColor};
       }
     }
 
@@ -183,9 +176,9 @@ export const TopContainer = styled.div`
       justify-content: center;
       align-items: center;
       gap: 12px;
-      padding: 12px;
+      padding: 24px;
       border: 2px solid ${theme.borderColor};
-      border-radius: 4px;
+      border-radius: 10px;
 
       &:hover {
         opacity: 0.8;
@@ -201,37 +194,38 @@ export const TopContainer = styled.div`
     }
   }
 
-  ${device.large} {
-    padding: 80px 0;
-    margin-top: 180px;
-
-    .top-content {
-      align-items: flex-start;
-    }
+  .home-dark-image {
+    max-width: 100%;
+    height: auto;
   }
 
   ${device.medium} {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    padding: 40px 0;
 
-    .top-content {
-      align-items: center;
+    .home-dark-image {
+      max-width: 80%; /* Ajusta a imagem em telas médias */
     }
   }
 
   ${device.small} {
     flex-direction: column;
-    padding: 20px;
-    margin-top: 120px;
+    padding: 20px 0;
 
     .top-content {
-      align-items: center;
+      .top-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .social-media {
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px;
+      }
     }
 
-    .icons {
-      width: 40px;
-      height: 40px;
+    .home-dark-image {
+      max-width: 100%; /* Ajusta a imagem para caber em telas pequenas */
     }
   }
 `;
@@ -240,14 +234,14 @@ export const Section = styled.section`
   margin-top: 120px;
   padding: 20px;
 
-  ${device.large} {
-    margin-top: 140px;
-    padding: 40px;
+  ${device.medium} {
+    margin-top: 80px;
+    padding: 15px;
   }
 
   ${device.small} {
-    margin-top: 80px;
-    padding: 15px;
+    margin-top: 60px;
+    padding: 10px;
   }
 `;
 
@@ -259,61 +253,148 @@ export const Footer = styled.footer`
   gap: 12px;
   margin-top: 20px;
   padding: 20px;
+  color: ${theme.lightColor};
 
   .developer {
     text-align: center;
     font-size: 1.3rem;
     font-weight: bold;
-    color: #fff;
 
     .top-links {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: ${theme.spacing};
+      flex-wrap: wrap; /* Permite que os links quebrem para a próxima linha se não houver espaço suficiente */
 
       a {
-        color: #fff;
+        color: ${theme.lightColor};
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: ${theme.primaryColor};
+        }
       }
     }
 
-    .social-media {
+    .social-media,
+    span {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
       padding: 10px;
-      border: 2px solid ${theme.borderColor};
-      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 600;
 
       &:hover {
         opacity: 0.8;
+        color: ${theme.primaryColor};
       }
-    }
 
-    .icons {
-      &:hover {
+      .icons {
         transition: transform 300ms ease;
-        transform: scale(1.05);
+
+        &:hover {
+          transform: scale(1.05);
+        }
       }
     }
 
     p {
-      margin-top: 40px;
+      margin-top: 20px;
+      font-size: 1rem;
     }
   }
 
-  ${device.small} {
+  /* Media Queries */
+  ${device.medium} {
+    padding: 15px;
+
     .developer {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
 
       .top-links {
         gap: 16px;
       }
 
       p {
-        margin-top: 30px;
+        margin-top: 15px;
       }
+    }
+  }
+
+  ${device.small} {
+    padding: 10px;
+
+    .developer {
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+
+      .top-links {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+      }
+
+      p {
+        margin-top: 10px;
+      }
+
+      .social-media,
+      span {
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px;
+      }
+    }
+  }
+`;
+
+export const SocialLinks = styled.div`
+  display: flex;
+  gap: 20px;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: ${theme.lightColor};
+    font-size: ${(props) => (props.size ? `${props.size}px` : "24px")};
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: ${theme.primaryColor};
+    }
+  }
+
+  /* Media Queries */
+  ${device.medium} {
+    gap: 15px;
+
+    a {
+      font-size: ${(props) =>
+        props.size
+          ? `${props.size * 0.9}px`
+          : "22px"}; /* Diminuir o tamanho do ícone em telas médias */
+    }
+  }
+
+  ${device.small} {
+    gap: 10px;
+
+    a {
+      font-size: ${(props) =>
+        props.size
+          ? `${props.size * 0.8}px`
+          : "20px"}; /* Diminuir ainda mais o tamanho do ícone em telas pequenas */
     }
   }
 `;

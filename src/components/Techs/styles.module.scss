@@ -14,8 +14,11 @@ h1 {
 
 .divTechs {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 2rem;
 	padding: 56px 0;
+	justify-content: center;
+
 }
 
 .techs {
@@ -23,18 +26,18 @@ h1 {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	flex-wrap: wrap;
 	width: 8.5rem;
 	height: 8.5rem;
 	background-color: #011627;
-	-webkit-box-shadow: 0px -2px 34px 1px rgba(0, 0, 0, 0.55);
-	-moz-box-shadow: 0px -2px 34px 1px rgba(0, 0, 0, 0.55);
 	box-shadow: 0px -2px 34px 1px rgba(0, 0, 0, 0.55);
 	gap: 1rem;
 	color: #fff;
+	transition: transform 0.3s ease;
+	/* Suaviza o efeito de escala */
 
 	&:hover {
-		scale: 1.1;
+		transform: scale(1.1);
+
 	}
 }
 
@@ -51,8 +54,45 @@ p {
 	font-size: 1rem;
 }
 
-.divTechs {
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
+
+@media (max-width: 1200px) {
+	.divTechs {
+		gap: 1.5rem;
+
+	}
+
+	.techs {
+		width: 7rem;
+		height: 7rem;
+	}
+
+	.icon {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+
+	.techName {
+		font-size: 0.9rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.divTechs {
+		gap: 1rem;
+
+	}
+
+	.techs {
+		width: 6rem;
+		height: 6rem;
+	}
+
+	.icon {
+		width: 2rem;
+		height: 2rem;
+	}
+
+	.techName {
+		font-size: 0.8rem;
+	}
 }

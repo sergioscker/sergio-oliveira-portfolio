@@ -1,10 +1,17 @@
-import { Link, Element } from "react-scroll";
 import { useState } from "react";
+import { Link, Element } from "react-scroll";
 
-import { IoLogoLinkedin, IoLogoGithub, IoLogoWhatsapp } from "react-icons/io5";
+import {
+  IoLogoLinkedin,
+  IoLogoGithub,
+  IoLogoWhatsapp,
+  IoMenu,
+  IoClose,
+} from "react-icons/io5";
 
 import H1 from "../../components/Title";
 import { useWindowSizeIcons } from "../../components/windowSizeIcons";
+
 import { PageAboutMe } from "../PageAboutMe";
 import { PageProjects } from "../PageProjects";
 import { PageTechs } from "../PageTechs";
@@ -15,59 +22,87 @@ import SergioResume from "../../assets/sergio-resume.pdf";
 
 import {
   Header,
+  HeaderContainer,
+  HamburgerIcon,
+  NavLinks,
   Footer,
   TopContainer,
   Section,
-  HeaderContainer,
+  SocialLinks,
 } from "./styles";
 
 export function Home() {
   const { width } = useWindowSizeIcons();
-  const iconSize = width > 768 ? 32 : 32;
-
-  const [isMenuOpen, setMenuOpen] = useState(false);
-
-  const handleMenuToggle = () => {
-    setMenuOpen(!isMenuOpen);
-  };
+  const iconSize = width > 768 ? 40 : 24; // Ajuste do tamanho dos ícones baseado na largura da tela
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar o menu
 
   const navLinks = [
     { name: "HOME", to: "home" },
     { name: "ABOUT ME", to: "aboutme" },
     { name: "PROJECTS", to: "projects" },
-    { name: "SKILLS", to: "contact" },
+    { name: "SKILLS", to: "skills" },
+    { name: "CONTACT", to: "contact" },
   ];
+
+  const socialLinks = [
+    {
+      href: "https://pt.linkedin.com/in/sergioliveiira",
+      icon: IoLogoLinkedin,
+      label: "sergioliveiira",
+    },
+    {
+      href: "https://wa.link/up0k32",
+      icon: IoLogoWhatsapp,
+      label: "(+351)939274154",
+    },
+    {
+      href: "https://github.com/sergioscker",
+      icon: IoLogoGithub,
+      label: "sergioscker",
+    },
+  ];
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen); // Função para abrir/fechar o menu
+  };
 
   return (
     <>
       {/* Header Section */}
       <HeaderContainer>
         <Header>
+          {/* Logo */}
           <Link to="home" smooth={true} duration={500} offset={-100}>
             <div className="logo">
               <img src={PhotoProfire} alt="profire" />
             </div>
           </Link>
 
-          <nav className={`links-content ${isMenuOpen ? "open" : ""}`}>
-            <ul>
-              {navLinks.map((link) => (
-                <li key={link.to}>
-                  <Link to={link.to} smooth={true} duration={500} offset={-100}>
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {/* Ícone de hambúrguer para telas pequenas */}
+          <HamburgerIcon onClick={toggleMenu}>
+            {isMenuOpen ? <IoClose size={24} /> : <IoMenu size={24} />}
+          </HamburgerIcon>
 
-          <div>
+          {/* Links de navegação, exibidos ou ocultados conforme o estado do menu */}
+          <NavLinks isopen={isMenuOpen}>
+            {navLinks.map((link) => (
+              <li key={link.to}>
+                <Link
+                  to={link.to}
+                  smooth={true}
+                  duration={500}
+                  offset={-100}
+                  onClick={() => setIsMenuOpen(false)} // Fecha o menu ao clicar em um link
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+
             <a href={SergioResume} className="download-cv">
               Download Resume
             </a>
-          </div>
-
-          <div className="hamburger-menu" onClick={handleMenuToggle}></div>
+          </NavLinks>
         </Header>
       </HeaderContainer>
 
@@ -77,29 +112,20 @@ export function Home() {
           <div className="top-content">
             <H1>Software Developer</H1>
 
-            <div className="top-links">
-              <a href="https://pt.linkedin.com/in/sergioliveiira">
-                <div className="social-media">
-                  <IoLogoLinkedin className="icons" size={iconSize} />
-                </div>
-              </a>
-
-              <a href="https://wa.link/up0k32">
-                <div className="social-media">
-                  <IoLogoWhatsapp className="icons" size={iconSize} />
-                </div>
-              </a>
-
-              <a href="https://github.com/sergioscker">
-                <div className="social-media">
-                  <IoLogoGithub className="icons" size={iconSize} />
-                </div>
-              </a>
-            </div>
+            {/* Links sociais */}
+            <SocialLinks>
+              {socialLinks.map((social, index) => (
+                <a key={index} href={social.href}>
+                  <div className="social-media">
+                    <social.icon className="icons" size={iconSize} />
+                  </div>
+                </a>
+              ))}
+            </SocialLinks>
           </div>
 
           <div>
-            <img src={HomeDark} alt="icon" />
+            <img src={HomeDark} className="home-dark-image" alt="icon" />
           </div>
         </TopContainer>
       </Element>
@@ -118,31 +144,28 @@ export function Home() {
         </Section>
       </Element>
 
-      {/* Seção SKILLS / CONTACT */}
+      {/* Seção SKILLS */}
+      <Element name="skills">
+        <Section>
+          <PageTechs />
+        </Section>
+      </Element>
+
+      {/* Seção CONTACT */}
       <Element name="contact">
-        <PageTechs />
         <Footer>
           <div className="developer">
-            <div className="top-links">
-              <a href="https://pt.linkedin.com/in/sergioliveiira">
-                <div className="social-media">
-                  <IoLogoLinkedin className="icons" size={iconSize} />
-                </div>
-              </a>
-
-              <a href="https://wa.link/up0k32">
-                <div className="social-media">
-                  <IoLogoWhatsapp className="icons" size={iconSize} />
-                </div>
-              </a>
-
-              <a href="https://github.com/sergioscker">
-                <div className="social-media">
-                  <IoLogoGithub className="icons" size={iconSize} />
-                </div>
-              </a>
-            </div>
-
+            {/* Links sociais no footer */}
+            <SocialLinks>
+              {socialLinks.map((social, index) => (
+                <a key={index} href={social.href}>
+                  <div className="social-media">
+                    <social.icon className="icons" size={iconSize} />
+                    <span>{social.label}</span>
+                  </div>
+                </a>
+              ))}
+            </SocialLinks>
             <p> ©2024 Developed by Sérgio Oliveira.</p>
           </div>
         </Footer>
