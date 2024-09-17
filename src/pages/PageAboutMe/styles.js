@@ -4,18 +4,17 @@ export const AboutContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 0;
+  min-height: 80vh; /* Garante que a seção ocupe pelo menos a altura da viewport */
 
   div {
     display: flex;
     flex-direction: column;
-    width: 100%;
     gap: 1rem;
 
     h1 {
-      font-size: 40px;
+      font-size: 2.5rem;
       text-align: left;
-      color: #4a8fff;
+      color: #007bff;
       font-weight: bold;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
     }
@@ -35,8 +34,9 @@ export const AboutContainer = styled.div`
   }
 
   @media screen and (max-width: 1225px) {
-    p {
+    .text {
       font-size: 16px;
+      text-align: center;
     }
   }
 `;

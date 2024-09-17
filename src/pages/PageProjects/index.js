@@ -10,7 +10,7 @@ import DevBills from "../../assets/dev-bills.png";
 
 import { Projects } from "../../components/Projects";
 
-import { Container } from "./styles";
+import { ProjectContainer } from "./styles";
 
 import {
   IoLogoJavascript,
@@ -51,7 +51,7 @@ const techData = [
 
 export const PageProjects = () => {
   return (
-    <Container>
+    <ProjectContainer>
       <Projects
         src={TechSolution}
         name="Tech Solution"
@@ -110,8 +110,8 @@ export const PageProjects = () => {
       <Projects
         src={MenuBurgers}
         name="Burgers"
-        hrefProject="https://sergioliveira-developer.github.io/Ementa-Burger/"
-        hrefCode="https://github.com/sergioliveira-developer/Ementa-Burger"
+        hrefProject="https://menu-burguers.vercel.app"
+        hrefCode="https://github.com/sergioscker/Menu-Burgers"
         techs={techData[0]}
       />
 
@@ -122,6 +122,6 @@ export const PageProjects = () => {
         hrefCode="https://github.com/sergioliveira-developer/Easy-Shopping"
         techs={techData[0]}
       />
-    </Container>
+    </ProjectContainer>
   );
 };

@@ -3,10 +3,10 @@ import styled from "styled-components";
 // Variáveis de tema para cores e espaçamentos
 const theme = {
   primaryColor: "#4a8fff",
-  darkColor: "#1c1c1c",
+  darkColor: "#2c2c2c",
   lightColor: "#cccccc",
   borderColor: "rgb(30, 59, 139)",
-  spacing: "24px",
+  spacing: "20px",
   iconSize: "55px",
   borderRadius: "24px",
   maxWidth: "1400px",
@@ -24,7 +24,7 @@ export const MainContainer = styled.div`
   flex-direction: column;
   max-width: ${theme.maxWidth};
   width: 100%;
-  padding: 0 32px;
+  padding: 0 36px;
   margin: 0 auto;
   z-index: 1;
 `;
@@ -36,7 +36,7 @@ export const HeaderContainer = styled.div`
   width: 100%;
   padding: ${theme.spacing};
   margin-bottom: ${theme.iconSize};
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Adicionando sombra para destacar o header
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 export const Header = styled.header`
@@ -49,6 +49,8 @@ export const Header = styled.header`
   border-radius: ${theme.borderRadius};
   padding: ${theme.spacing};
   margin: 0 auto;
+  position: fixed;
+  z-index: 50;
 
   .logo img {
     width: ${theme.iconSize};
@@ -60,9 +62,19 @@ export const Header = styled.header`
     }
   }
 
+  ${device.medium} {
+    .logo {
+      display: none;
+    }
+
+    max-width: max-content;
+  }
+
   ${device.small} {
     flex-direction: column;
     align-items: center;
+    max-width: 350px;
+    padding: 15px 0;
 
     .links-content {
       display: none;
@@ -70,20 +82,19 @@ export const Header = styled.header`
   }
 `;
 
-// Ícone de hambúrguer para menu em telas pequenas
 export const HamburgerIcon = styled.div`
   display: none;
+  padding: 8px 0;
+
   cursor: pointer;
 
   ${device.small} {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
   }
 `;
 
-// Estilos para os links de navegação (menu lateral flexbox para telas pequenas)
 export const NavLinks = styled.ul`
   display: flex;
   align-items: center;
@@ -123,25 +134,16 @@ export const NavLinks = styled.ul`
     }
   }
 
-  /* Menu adaptativo para telas pequenas */
   ${device.small} {
     display: ${({ isopen }) => (isopen ? "flex" : "none")};
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    background-color: ${theme.darkColor};
+    gap: 18px;
     width: 100%;
     padding: 20px 0;
 
     li {
       font-size: 1.5rem;
-    }
-
-    .download-cv {
-      &:hover {
-        background-color: ${theme.primaryColor};
-        color: ${theme.darkColor};
-      }
     }
   }
 `;
@@ -150,48 +152,17 @@ export const TopContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
   width: 100%;
   max-width: ${theme.maxWidth};
-  padding: 60px 0;
+  padding: 80px 0;
   margin: 0 auto;
+  min-height: 90vh;
 
   .top-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    .top-links {
-      display: flex;
-      align-items: center;
-      gap: ${theme.spacing};
-
-      a {
-        color: ${theme.lightColor};
-      }
-    }
-
-    .social-media {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      padding: 24px;
-      border: 2px solid ${theme.borderColor};
-      border-radius: 10px;
-
-      &:hover {
-        opacity: 0.8;
-      }
-    }
-
-    .icons {
-      transition: transform 300ms ease;
-
-      &:hover {
-        transform: scale(1.05);
-      }
-    }
+    justify-content: center;
   }
 
   .home-dark-image {
@@ -200,48 +171,33 @@ export const TopContainer = styled.div`
   }
 
   ${device.medium} {
-    padding: 40px 0;
+    padding: 100px 0;
 
     .home-dark-image {
-      max-width: 80%; /* Ajusta a imagem em telas médias */
+      max-width: 100%;
+      padding: 0 10px;
     }
   }
 
   ${device.small} {
     flex-direction: column;
-    padding: 20px 0;
+    padding: 80px 0;
 
     .top-content {
-      .top-links {
-        flex-direction: column;
-        gap: 10px;
-      }
+      flex-direction: column;
+      gap: 10px;
 
-      .social-media {
+      .links-sociais {
         flex-direction: column;
         gap: 8px;
-        padding: 16px;
+        padding: 5px;
       }
     }
 
     .home-dark-image {
-      max-width: 100%; /* Ajusta a imagem para caber em telas pequenas */
+      padding: 20px;
+      max-width: 100%;
     }
-  }
-`;
-
-export const Section = styled.section`
-  margin-top: 120px;
-  padding: 20px;
-
-  ${device.medium} {
-    margin-top: 80px;
-    padding: 15px;
-  }
-
-  ${device.small} {
-    margin-top: 60px;
-    padding: 10px;
   }
 `;
 
@@ -251,46 +207,36 @@ export const Footer = styled.footer`
   justify-content: center;
   align-items: center;
   gap: 12px;
-  margin-top: 20px;
   padding: 20px;
   color: ${theme.lightColor};
+  min-height: 100vh;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #007bff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  }
 
   .developer {
-    text-align: center;
-    font-size: 1.3rem;
-    font-weight: bold;
-
-    .top-links {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: ${theme.spacing};
-      flex-wrap: wrap; /* Permite que os links quebrem para a próxima linha se não houver espaço suficiente */
-
-      a {
-        color: ${theme.lightColor};
-        text-decoration: none;
-        font-weight: 600;
-        transition: color 0.3s ease;
-
-        &:hover {
-          color: ${theme.primaryColor};
-        }
-      }
-    }
+    display: flex;
+    flex-direction: column;
 
     .social-media,
-    span {
+    span,
+    a {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 12px;
       padding: 10px;
-      font-size: 1rem;
+      font-size: 2rem;
       font-weight: 600;
+      color: ${theme.lightColor};
+      text-decoration: none;
 
       &:hover {
-        opacity: 0.8;
         color: ${theme.primaryColor};
       }
 
@@ -298,18 +244,18 @@ export const Footer = styled.footer`
         transition: transform 300ms ease;
 
         &:hover {
-          transform: scale(1.05);
+          transform: scale(1.08);
+          color: ${theme.primaryColor};
         }
       }
     }
 
     p {
-      margin-top: 20px;
-      font-size: 1rem;
+      margin-top: 50px;
+      font-size: 32px;
     }
   }
 
-  /* Media Queries */
   ${device.medium} {
     padding: 15px;
 
@@ -321,6 +267,9 @@ export const Footer = styled.footer`
       }
 
       p {
+        font-size: 28px;
+        text-align: center;
+        padding: 0 10px;
         margin-top: 15px;
       }
     }
@@ -344,7 +293,10 @@ export const Footer = styled.footer`
       }
 
       p {
+        font-size: 26px;
         margin-top: 10px;
+        text-align: center;
+        padding: 0 10px;
       }
 
       .social-media,
@@ -375,26 +327,42 @@ export const SocialLinks = styled.div`
     }
   }
 
-  /* Media Queries */
-  ${device.medium} {
-    gap: 15px;
+  .social-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px;
+    border: 2px solid ${theme.borderColor};
+    border-radius: 10px;
 
-    a {
-      font-size: ${(props) =>
-        props.size
-          ? `${props.size * 0.9}px`
-          : "22px"}; /* Diminuir o tamanho do ícone em telas médias */
+    &:hover {
+      opacity: 0.8;
+      border-color: ${theme.primaryColor};
+    }
+
+    .icons {
+      color: #fff;
+      transition: transform 300ms ease;
+
+      &:hover {
+        transform: scale(1.08);
+      }
+    }
+  }
+
+  ${device.medium} {
+    gap: 12px;
+    margin-bottom: 20px;
+
+    .social-links {
+      padding: 20px;
     }
   }
 
   ${device.small} {
-    gap: 10px;
-
-    a {
-      font-size: ${(props) =>
-        props.size
-          ? `${props.size * 0.8}px`
-          : "20px"}; /* Diminuir ainda mais o tamanho do ícone em telas pequenas */
+    .social-links {
+      padding: 20px;
     }
   }
 `;

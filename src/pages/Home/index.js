@@ -27,13 +27,12 @@ import {
   NavLinks,
   Footer,
   TopContainer,
-  Section,
   SocialLinks,
 } from "./styles";
 
 export function Home() {
   const { width } = useWindowSizeIcons();
-  const iconSize = width > 768 ? 40 : 24; // Ajuste do tamanho dos ícones baseado na largura da tela
+  const iconSize = width > 768 ? 50 : 28; // Ajuste do tamanho dos ícones baseado na largura da tela
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar o menu
 
   const navLinks = [
@@ -72,7 +71,7 @@ export function Home() {
       <HeaderContainer>
         <Header>
           {/* Logo */}
-          <Link to="home" smooth={true} duration={500} offset={-100}>
+          <Link to="home" smooth={true} duration={500} offset={-80}>
             <div className="logo">
               <img src={PhotoProfire} alt="profire" />
             </div>
@@ -91,7 +90,7 @@ export function Home() {
                   to={link.to}
                   smooth={true}
                   duration={500}
-                  offset={-100}
+                  offset={-80}
                   onClick={() => setIsMenuOpen(false)} // Fecha o menu ao clicar em um link
                 >
                   {link.name}
@@ -116,7 +115,7 @@ export function Home() {
             <SocialLinks>
               {socialLinks.map((social, index) => (
                 <a key={index} href={social.href}>
-                  <div className="social-media">
+                  <div className="social-links">
                     <social.icon className="icons" size={iconSize} />
                   </div>
                 </a>
@@ -132,40 +131,34 @@ export function Home() {
 
       {/* Seção ABOUT ME */}
       <Element name="aboutme">
-        <Section>
-          <PageAboutMe />
-        </Section>
+        <PageAboutMe />
       </Element>
 
       {/* Seção PROJECTS */}
       <Element name="projects">
-        <Section>
-          <PageProjects />
-        </Section>
+        <PageProjects />
       </Element>
 
       {/* Seção SKILLS */}
       <Element name="skills">
-        <Section>
-          <PageTechs />
-        </Section>
+        <PageTechs />
       </Element>
 
       {/* Seção CONTACT */}
       <Element name="contact">
         <Footer>
+          <h1>Contact</h1>
           <div className="developer">
             {/* Links sociais no footer */}
-            <SocialLinks>
-              {socialLinks.map((social, index) => (
-                <a key={index} href={social.href}>
-                  <div className="social-media">
-                    <social.icon className="icons" size={iconSize} />
-                    <span>{social.label}</span>
-                  </div>
-                </a>
-              ))}
-            </SocialLinks>
+            {socialLinks.map((social, index) => (
+              <a key={index} href={social.href}>
+                <div className="social-media">
+                  <social.icon className="icons" size={iconSize} />
+                  <span>{social.label}</span>
+                </div>
+              </a>
+            ))}
+
             <p> ©2024 Developed by Sérgio Oliveira.</p>
           </div>
         </Footer>

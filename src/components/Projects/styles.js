@@ -6,9 +6,12 @@ export const ContainerProject = styled.div`
     auto-fit,
     minmax(200px, 1fr)
   ); /* Grid responsivo */
-  gap: 1.5rem; /* Espaçamento entre os cartões */
-  padding: 1.5rem; /* Padding responsivo */
-
+  gap: 1.5rem;
+  padding-top: 100px;
+  /* margin: 0 auto;
+  max-width: 1400px;
+  padding: 0 36px;
+  z-index: 1; */
 
   .cards {
     display: flex;
@@ -16,7 +19,7 @@ export const ContainerProject = styled.div`
     justify-content: center;
     align-items: center;
     background-color: #011627;
-    box-shadow: 0px -2px 34px 1px rgba(0, 0, 0, 0.55);
+    box-shadow: 0px -2px 34px 1px rgba(0, 0, 0, 0.6);
     border-radius: 10px;
     overflow: hidden; /* Garante que as imagens não ultrapassem os limites do card */
     transition: transform 0.3s ease;

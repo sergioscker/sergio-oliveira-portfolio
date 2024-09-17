@@ -19,10 +19,10 @@ export const PageAboutMe = () => {
 
           <h5 className="text">
             Recentemente, comecei a explorar o mundo do desenvolvimento web, com
-            foco em <span>JavaScript, React.js e Node.js</span>. Estou constantemente em
-            busca de novos conhecimentos e adoro mergulhar em projetos que me
-            façam sair da zona de conforto, pois acredito que é através dos
-            desafios que realmente crescemos e nos tornamos melhores
+            foco em <span>JavaScript, React.js e Node.js</span>. Estou
+            constantemente em busca de novos conhecimentos e adoro mergulhar em
+            projetos que me façam sair da zona de conforto, pois acredito que é
+            através dos desafios que realmente crescemos e nos tornamos melhores
             profissionais. Nos últimos meses, desenvolvi alguns projetos no
             GitHub que me ajudaram a aplicar na prática os conceitos que venho
             estudando. Um deles foi este portfólio pessoal, onde criei todo o

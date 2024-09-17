@@ -11,8 +11,9 @@ export const ContainerTools = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
-  padding: 56px 0;
   width: 100%;
+  padding: 120px 0;
+  min-height: 100vh; /* Garante que a seção ocupe pelo menos a altura da viewport */
 
   /* Media Queries */
   ${device.medium} {
