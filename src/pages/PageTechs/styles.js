@@ -22,7 +22,8 @@ export const ContainerTools = styled.div`
   }
 
   ${device.small} {
-    padding: 20px 0;
+    padding: 100px 0;
+    margin-top: 80px;
     gap: 1rem; /* Diminuir o espaço entre os itens em telas pequenas */
   }
 `;

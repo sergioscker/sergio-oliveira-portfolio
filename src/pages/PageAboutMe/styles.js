@@ -4,7 +4,7 @@ export const AboutContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 80vh; /* Garante que a seção ocupe pelo menos a altura da viewport */
+  min-height: 100vh; /* Garante que a seção ocupe pelo menos a altura da viewport */
 
   div {
     display: flex;
@@ -38,5 +38,9 @@ export const AboutContainer = styled.div`
       font-size: 16px;
       text-align: center;
     }
+  }
+
+  @media (max-width: 480px) {
+    padding: 120px 0;
   }
 `;

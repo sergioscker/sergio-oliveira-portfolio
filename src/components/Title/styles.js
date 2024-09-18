@@ -16,7 +16,8 @@ export const H1 = styled.h1`
   font-weight: bold;
   max-width: 590px;
   width: 100%;
-  padding: 15px;
+  padding: 32px;
+  margin-top: 50px;
   color: #007bff;
   text-align: center;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);

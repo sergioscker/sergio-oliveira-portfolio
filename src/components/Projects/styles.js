@@ -18,14 +18,14 @@ export const ContainerProject = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #011627;
-    box-shadow: 0px -2px 34px 1px rgba(0, 0, 0, 0.6);
+    background-color: #181818;
+    box-shadow: 0px -2px 34px 1px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     overflow: hidden; /* Garante que as imagens não ultrapassem os limites do card */
     transition: transform 0.3s ease;
-    width: 100%; /* Ocupa toda a largura disponível do grid */
-    max-width: 300px; /* Largura máxima do card */
-    height: auto; /* Altura automática com base no conteúdo */
+    width: 100%;
+    max-width: 300px;
+    height: auto;
     color: #fff;
 
     &:hover {

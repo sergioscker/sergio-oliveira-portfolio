@@ -3,7 +3,7 @@ import styled from "styled-components";
 // Variáveis de tema para cores e espaçamentos
 const theme = {
   primaryColor: "#4a8fff",
-  darkColor: "#2c2c2c",
+  darkColor: " #1f1f1f",
   lightColor: "#cccccc",
   borderColor: "rgb(30, 59, 139)",
   spacing: "20px",
@@ -35,8 +35,6 @@ export const HeaderContainer = styled.div`
   align-items: center;
   width: 100%;
   padding: ${theme.spacing};
-  margin-bottom: ${theme.iconSize};
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 export const Header = styled.header`
@@ -63,18 +61,19 @@ export const Header = styled.header`
   }
 
   ${device.medium} {
+    max-width: max-content;
+
     .logo {
       display: none;
     }
-
-    max-width: max-content;
   }
 
   ${device.small} {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     max-width: 350px;
     padding: 15px 0;
+    margin-top: 70px;
 
     .links-content {
       display: none;
@@ -85,13 +84,19 @@ export const Header = styled.header`
 export const HamburgerIcon = styled.div`
   display: none;
   padding: 8px 0;
-
   cursor: pointer;
 
   ${device.small} {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 51; /* Garante que o ícone de fechar fica acima do menu */
+
+    svg {
+      width: 24px;
+      height: 24px;
+      color: ${theme.lightColor};
+    }
   }
 `;
 
@@ -138,12 +143,16 @@ export const NavLinks = styled.ul`
     display: ${({ isopen }) => (isopen ? "flex" : "none")};
     flex-direction: column;
     align-items: center;
-    gap: 18px;
+    gap: 12px;
     width: 100%;
-    padding: 20px 0;
+    padding: 14px 0;
 
     li {
-      font-size: 1.5rem;
+      font-size: 18px;
+    }
+
+    .download-cv {
+      display: none;
     }
   }
 `;
@@ -207,11 +216,12 @@ export const Footer = styled.footer`
   justify-content: center;
   align-items: center;
   gap: 12px;
-  padding: 20px;
+  padding: 80px;
   color: ${theme.lightColor};
   min-height: 100vh;
 
   h1 {
+    margin-top: 50px;
     font-size: 2.5rem;
     margin-bottom: 3rem;
     color: #007bff;
@@ -231,9 +241,9 @@ export const Footer = styled.footer`
       justify-content: center;
       gap: 12px;
       padding: 10px;
-      font-size: 2rem;
+      font-size: 24px;
       font-weight: 600;
-      color: ${theme.lightColor};
+      color: rgba(255, 255, 255, 0.6);
       text-decoration: none;
 
       &:hover {
@@ -251,8 +261,8 @@ export const Footer = styled.footer`
     }
 
     p {
-      margin-top: 50px;
       font-size: 32px;
+      color: rgba(255, 255, 255, 0.6);
     }
   }
 
@@ -276,7 +286,11 @@ export const Footer = styled.footer`
   }
 
   ${device.small} {
-    padding: 10px;
+    padding: 50px;
+
+    h1 {
+      margin-top: 70px;
+    }
 
     .developer {
       font-size: 1rem;

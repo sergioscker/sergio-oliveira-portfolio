@@ -7,6 +7,7 @@ import {
   IoLogoWhatsapp,
   IoMenu,
   IoClose,
+  IoMail,
 } from "react-icons/io5";
 
 import H1 from "../../components/Title";
@@ -59,6 +60,12 @@ export function Home() {
       icon: IoLogoGithub,
       label: "sergioscker",
     },
+
+    {
+      href: "mailto:sergiowallace11@hotmail.com",
+      icon: IoMail,
+      label: "email",
+    },
   ];
 
   const toggleMenu = () => {
@@ -69,7 +76,7 @@ export function Home() {
     <>
       {/* Header Section */}
       <HeaderContainer>
-        <Header>
+        <Header isopen={isMenuOpen}>
           {/* Logo */}
           <Link to="home" smooth={true} duration={500} offset={-80}>
             <div className="logo">
@@ -79,7 +86,7 @@ export function Home() {
 
           {/* Ícone de hambúrguer para telas pequenas */}
           <HamburgerIcon onClick={toggleMenu}>
-            {isMenuOpen ? <IoClose size={24} /> : <IoMenu size={24} />}
+            {isMenuOpen ? <IoClose size={28} /> : <IoMenu size={28} />}
           </HamburgerIcon>
 
           {/* Links de navegação, exibidos ou ocultados conforme o estado do menu */}
@@ -153,7 +160,7 @@ export function Home() {
             {socialLinks.map((social, index) => (
               <a key={index} href={social.href}>
                 <div className="social-media">
-                  <social.icon className="icons" size={iconSize} />
+                  <social.icon className="icons" size={45} />
                   <span>{social.label}</span>
                 </div>
               </a>
