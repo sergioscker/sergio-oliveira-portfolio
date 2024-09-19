@@ -166,6 +166,7 @@ export const TopContainer = styled.div`
   padding: 80px 0;
   margin: 0 auto;
   min-height: 90vh;
+  overflow: hidden;
 
   .top-content {
     display: flex;
@@ -190,18 +191,7 @@ export const TopContainer = styled.div`
 
   ${device.small} {
     flex-direction: column;
-    padding: 80px 0;
-
-    .top-content {
-      flex-direction: column;
-      gap: 10px;
-
-      .links-sociais {
-        flex-direction: column;
-        gap: 8px;
-        padding: 5px;
-      }
-    }
+    padding: 70px 0;
 
     .home-dark-image {
       padding: 20px;
@@ -370,13 +360,14 @@ export const SocialLinks = styled.div`
     margin-bottom: 20px;
 
     .social-links {
-      padding: 20px;
+      padding: 25px;
     }
   }
 
   ${device.small} {
     .social-links {
       padding: 20px;
+      margin-bottom: 10px;
     }
   }
 `;

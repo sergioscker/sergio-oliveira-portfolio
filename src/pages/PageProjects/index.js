@@ -24,28 +24,28 @@ import { TbBrandMongodb, TbBrandTypescript } from "react-icons/tb";
 
 const techData = [
   [
-    { icon: <IoLogoJavascript size={40} /> },
-    { icon: <IoLogoHtml5 size={40} /> },
-    { icon: <IoLogoCss3 size={40} /> },
+    { icon: <IoLogoJavascript size={35} /> },
+    { icon: <IoLogoHtml5 size={35} /> },
+    { icon: <IoLogoCss3 size={35} /> },
   ],
   [
-    { icon: <IoLogoJavascript size={40} /> },
-    { icon: <IoLogoReact size={40} /> },
-    { icon: <IoLogoHtml5 size={40} /> },
+    { icon: <IoLogoJavascript size={35} /> },
+    { icon: <IoLogoReact size={35} /> },
+    { icon: <IoLogoHtml5 size={35} /> },
   ],
   [
-    { icon: <TbBrandMongodb size={40} /> },
-    { icon: <IoLogoJavascript size={40} /> },
-    { icon: <IoLogoReact size={40} /> },
-    { icon: <IoLogoDocker size={40} /> },
-    { icon: <IoLogoHtml5 size={40} /> },
+    { icon: <TbBrandMongodb size={35} /> },
+    { icon: <IoLogoJavascript size={35} /> },
+    { icon: <IoLogoReact size={35} /> },
+    { icon: <IoLogoDocker size={35} /> },
+    { icon: <IoLogoHtml5 size={35} /> },
   ],
 
   [
-    { icon: <IoLogoJavascript size={40} /> },
-    { icon: <IoLogoHtml5 size={40} /> },
-    { icon: <TbBrandMongodb size={40} /> },
-    { icon: <TbBrandTypescript size={40} /> },
+    { icon: <IoLogoJavascript size={35} /> },
+    { icon: <IoLogoHtml5 size={35} /> },
+    { icon: <TbBrandMongodb size={35} /> },
+    { icon: <TbBrandTypescript size={35} /> },
   ],
 ];
 

@@ -33,7 +33,7 @@ import {
 
 export function Home() {
   const { width } = useWindowSizeIcons();
-  const iconSize = width > 768 ? 50 : 28; // Ajuste do tamanho dos ícones baseado na largura da tela
+  const iconSize = width > 768 ? 50 : 32; // Ajuste do tamanho dos ícones baseado na largura da tela
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar o menu
 
   const navLinks = [

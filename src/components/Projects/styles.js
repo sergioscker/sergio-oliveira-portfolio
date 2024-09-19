@@ -8,10 +8,6 @@ export const ContainerProject = styled.div`
   ); /* Grid responsivo */
   gap: 1.5rem;
   padding-top: 100px;
-  /* margin: 0 auto;
-  max-width: 1400px;
-  padding: 0 36px;
-  z-index: 1; */
 
   .cards {
     display: flex;
@@ -41,8 +37,11 @@ export const ContainerProject = styled.div`
 
     .description {
       text-align: center;
-      font-size: 1rem;
       padding: 0.5rem;
+
+      h5 {
+        font-size: 18px;
+      }
     }
 
     .container-techs {
@@ -50,7 +49,6 @@ export const ContainerProject = styled.div`
       align-items: center;
       justify-content: center;
       gap: 0.75rem;
-      flex-wrap: wrap; /* Quebra linha em telas pequenas */
       margin-top: 0.5rem;
     }
 
@@ -67,12 +65,11 @@ export const ContainerProject = styled.div`
       background: none;
       border: 1px solid #fff;
       padding: 0.5rem 1rem;
-      font-size: 0.8rem;
       border-radius: 5px;
       transition: border-color 0.3s;
 
       &:hover {
-        border-color: #68a9ff;
+        border-color: #007bff;
       }
     }
 
@@ -82,7 +79,7 @@ export const ContainerProject = styled.div`
       font-size: 0.9rem;
 
       &:hover {
-        color: #68a9ff;
+        color: #007bff;
       }
     }
   }

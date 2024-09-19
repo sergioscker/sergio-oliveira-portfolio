@@ -6,12 +6,11 @@ export const ProjectContainer = styled.div`
   justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
-  padding: 120px 0;
+  padding: 100px 0;
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
   min-height: 100vh;
-  
 
   @media screen and (max-width: 770px) {
     img {
