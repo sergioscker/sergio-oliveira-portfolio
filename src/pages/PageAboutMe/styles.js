@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+// Media Queries para telas grandes, médias e pequenas
+const device = {
+  large: "@media (min-width: 1200px)", // Telas grandes
+  medium: "@media (min-width: 768px) and (max-width: 1199px)", // Telas médias
+  small: "@media (max-width: 768px)", // Telas pequenas
+};
+
 export const AboutContainer = styled.div`
   display: flex;
   align-items: center;
@@ -31,16 +38,28 @@ export const AboutContainer = styled.div`
         font-weight: bold;
       }
     }
-  }
 
-  @media screen and (max-width: 1225px) {
-    .text {
-      font-size: 16px;
-      text-align: center;
+    ${device.medium} {
+      h1 {
+        text-align: center;
+      }
+
+      .text {
+        font-size: 16px;
+      }
     }
-  }
 
-  @media (max-width: 480px) {
-    padding: 120px 0;
+    ${device.small} {
+      padding: 80px 20px;
+
+      h1 {
+        text-align: center;
+      }
+
+      .text {
+        font-size: 16px;
+        text-align: center;
+      }
+    }
   }
 `;

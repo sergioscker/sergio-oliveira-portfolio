@@ -34,7 +34,7 @@ export const HeaderContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: ${theme.spacing};
+  margin-top: 12px;
 `;
 
 export const Header = styled.header`
@@ -48,6 +48,7 @@ export const Header = styled.header`
   padding: ${theme.spacing};
   margin: 0 auto;
   position: fixed;
+  gap: 24px;
   z-index: 50;
 
   .logo img {
@@ -57,6 +58,22 @@ export const Header = styled.header`
 
     ${device.small} {
       display: none; /* Oculta a foto de perfil em telas pequenas */
+    }
+  }
+
+  .download-cv {
+    background-color: ${theme.darkColor};
+    color: ${theme.primaryColor};
+    padding: 10px 20px;
+    border: 2px solid ${theme.primaryColor};
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background-color: ${theme.primaryColor};
+      color: ${theme.darkColor};
     }
   }
 
@@ -73,9 +90,14 @@ export const Header = styled.header`
     align-items: stretch;
     max-width: 350px;
     padding: 15px 0;
-    margin-top: 70px;
+    margin-top: 75px;
+    gap: 6px;
 
     .links-content {
+      display: none;
+    }
+
+    .download-cv {
       display: none;
     }
   }
@@ -123,22 +145,6 @@ export const NavLinks = styled.ul`
     }
   }
 
-  .download-cv {
-    background-color: ${theme.darkColor};
-    color: ${theme.primaryColor};
-    padding: 10px 20px;
-    border: 2px solid ${theme.primaryColor};
-    border-radius: 20px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-
-    &:hover {
-      background-color: ${theme.primaryColor};
-      color: ${theme.darkColor};
-    }
-  }
-
   ${device.small} {
     display: ${({ isopen }) => (isopen ? "flex" : "none")};
     flex-direction: column;
@@ -149,10 +155,6 @@ export const NavLinks = styled.ul`
 
     li {
       font-size: 18px;
-    }
-
-    .download-cv {
-      display: none;
     }
   }
 `;
@@ -181,11 +183,12 @@ export const TopContainer = styled.div`
   }
 
   ${device.medium} {
-    padding: 100px 0;
+    padding: 40px 0;
+    min-height: 50vh;
 
     .home-dark-image {
       max-width: 100%;
-      padding: 0 10px;
+      padding: 0 15px;
     }
   }
 
@@ -360,14 +363,15 @@ export const SocialLinks = styled.div`
     margin-bottom: 20px;
 
     .social-links {
-      padding: 25px;
+      padding: 18px;
+      margin-bottom: 30px;
     }
   }
 
   ${device.small} {
     .social-links {
-      padding: 20px;
-      margin-bottom: 10px;
+      padding: 18px;
+      margin-bottom: 15px;
     }
   }
 `;

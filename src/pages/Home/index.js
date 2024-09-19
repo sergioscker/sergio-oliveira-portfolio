@@ -104,11 +104,10 @@ export function Home() {
                 </Link>
               </li>
             ))}
-
-            <a href={SergioResume} className="download-cv">
-              Download Resume
-            </a>
           </NavLinks>
+          <a href={SergioResume} className="download-cv">
+            Download Resume
+          </a>
         </Header>
       </HeaderContainer>
 
