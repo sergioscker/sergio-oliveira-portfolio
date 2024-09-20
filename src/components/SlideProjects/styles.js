@@ -29,9 +29,10 @@ export const Container = styled.div`
 
 export const CardContainer = styled.div`
   display: flex;
-  overflow-x: auto;
+  gap: 15px;
   width: 100%;
   padding: 20px;
+  overflow-x: scroll;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   overflow: hidden;
@@ -146,6 +147,7 @@ export const ProjectButton = styled.button`
 
   &:hover {
     opacity: 0.8;
+    background: linear-gradient(-45deg, #0056b3, #007bff);
   }
 `;
 
@@ -160,6 +162,11 @@ export const ArrowButton = styled.button`
   padding: 10px 20px;
   border-radius: 50%;
   font-size: 20px;
+
+  &:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+  }
 
   @media (max-width: 480px) {
     display: flex;
@@ -180,6 +187,7 @@ export const IndicatorContainer = styled.div`
 export const Indicator = styled.div`
   width: 10px;
   height: 10px;
-  background-color: ${(props) => (props.active ? "#007bff" : "#555")};
+  background-color: ${(props) => (props.isActive ? "#007bff" : "#555")};
   border-radius: 50%;
+  transition: background-color 0.3s ease;
 `;

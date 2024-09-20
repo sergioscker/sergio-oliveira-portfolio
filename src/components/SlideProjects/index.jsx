@@ -156,21 +156,22 @@ export const ProjectsPage = () => {
     },
   ];
 
-  const cardsPerView = 3; // Número de cards visíveis
+  const cardsPerView = 4; // Número de cards visíveis
   const totalCards = cards.length;
-  const [currentIndex, setCurrentIndex] = useState(3);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const sliderRef = useRef(null);
 
   const handleScroll = (direction) => {
+    const cardWidth = sliderRef.current.offsetWidth / cardsPerView;
     let nextIndex = currentIndex;
 
-    if (direction === "left") {
+    // Corrigir o índice para navegação
+    if (direction === "right") {
       nextIndex = Math.min(currentIndex + 1, totalCards - cardsPerView);
-    } else {
-      nextIndex = Math.max(0, currentIndex - 1);
+    } else if (direction === "left") {
+      nextIndex = Math.max(currentIndex - 1, 0);
     }
 
-    const cardWidth = sliderRef.current.offsetWidth / cardsPerView;
     sliderRef.current.scrollLeft = nextIndex * cardWidth;
     setCurrentIndex(nextIndex);
   };
@@ -188,13 +189,13 @@ export const ProjectsPage = () => {
       <ButtonContent>
         <div className="arrow-button">
           <ArrowButton
-            aria-label="Rolar para a esquerda"
+            aria-label="Scroll left"
             onClick={() => handleScroll("left")}
           >
             {"<"}
           </ArrowButton>
           <ArrowButton
-            aria-label="Rolar para a direita"
+            aria-label="Scroll right"
             onClick={() => handleScroll("right")}
           >
             {">"}
@@ -228,6 +229,7 @@ export const ProjectsPage = () => {
                   Ver Projeto
                 </ProjectButton>
                 <GithubButton
+                  aria-label={`Ver repositório ${card.title}`}
                   onClick={() =>
                     window.open(card.repoUrl, "_blank", "noopener noreferrer")
                   }
@@ -240,11 +242,12 @@ export const ProjectsPage = () => {
         </CardContainer>
 
         <IndicatorContainer>
-          {Array.from({ length: Math.ceil(totalCards / cardsPerView) }).map(
-            (_, index) => (
+          {Array.from({ length: totalCards - cardsPerView + 1 }).map(
+            (_, idx) => (
               <Indicator
-                key={index}
-                active={Math.floor(currentIndex / cardsPerView) === index}
+                key={idx}
+                isActive={currentIndex === idx}
+                onClick={() => setCurrentIndex(idx)}
               />
             )
           )}
