@@ -1,5 +1,3 @@
-import { Techs } from "../../components/Techs/Techs";
-
 import {
   IoLogoJavascript,
   IoLogoHtml5,
@@ -15,6 +13,8 @@ import { TbBrandVite, TbBrandTypescript } from "react-icons/tb";
 
 import { ContainerTools } from "./styles";
 import { useWindowSizeIcons } from "../../components/windowSizeIcons";
+import { Techs } from "../../components/Techs/Techs";
+
 import { MainContainer } from "../Home/styles";
 
 export const PageTechs = () => {
@@ -22,24 +22,22 @@ export const PageTechs = () => {
   const iconSize = width > 768 ? 55 : 35; // Ajuste os valores conforme necessário
 
   const techData = [
-    { icon: <IoLogoJavascript size={iconSize} />, name: "JavaScript" },
-    { icon: <IoLogoCss3 size={iconSize} />, name: "Css3" },
-    { icon: <IoLogoHtml5 size={iconSize} />, name: "Html5" },
     { icon: <IoLogoReact size={iconSize} />, name: "React" },
-
+    { icon: <IoLogoJavascript size={iconSize} />, name: "JavaScript" },
     { icon: <TbBrandTypescript size={iconSize} />, name: "TypeScript" },
+    { icon: <IoLogoHtml5 size={iconSize} />, name: "Html5" },
+    { icon: <IoLogoCss3 size={iconSize} />, name: "Css3" },
+    { icon: <IoLogoSass size={iconSize} />, name: "Sass" },
     { icon: <IoLogoNodejs size={iconSize} />, name: "Nodejs" },
     { icon: <TbBrandVite size={iconSize} />, name: "Vite" },
     { icon: <FaGitAlt size={iconSize} />, name: "Git" },
-    { icon: <IoLogoSass size={iconSize} />, name: "Sass" },
     { icon: <IoLogoDocker size={iconSize} />, name: "Docker" },
   ];
 
   return (
     <ContainerTools>
       <MainContainer>
-        <Techs title="Languages" techs={techData.slice(0, 3)} />
-        <Techs title="Technologies" techs={techData.slice(3)} />
+        <Techs title="Technologies" techs={techData} />
       </MainContainer>
     </ContainerTools>
   );

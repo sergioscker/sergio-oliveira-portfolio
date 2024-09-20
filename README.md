@@ -6,3 +6,5 @@ This project was built using React.js and styled with Sass and styled-components
 
 Feel free to explore and check out my work! 💼
 </p>
+
+

@@ -8,7 +8,7 @@ const theme = {
   borderColor: "rgb(30, 59, 139)",
   spacing: "20px",
   iconSize: "55px",
-  borderRadius: "24px",
+  borderRadius: "32px",
   maxWidth: "1400px",
 };
 
@@ -24,7 +24,7 @@ export const MainContainer = styled.div`
   flex-direction: column;
   max-width: ${theme.maxWidth};
   width: 100%;
-  padding: 0 36px;
+  padding: 0 22px;
   margin: 0 auto;
   z-index: 1;
 `;
@@ -45,11 +45,17 @@ export const Header = styled.header`
   max-width: ${theme.maxWidth};
   background-color: ${theme.darkColor};
   border-radius: ${theme.borderRadius};
+  border: 1px solid #3d3d3d6e;
   padding: ${theme.spacing};
   margin: 0 auto;
-  position: fixed;
   gap: 24px;
+  position: fixed;
   z-index: 50;
+
+  ${device.small} {
+    width: 90%;
+    border-radius: 80px;
+  }
 
   .logo img {
     width: ${theme.iconSize};
@@ -75,30 +81,9 @@ export const Header = styled.header`
       background-color: ${theme.primaryColor};
       color: ${theme.darkColor};
     }
-  }
 
-  ${device.medium} {
-    max-width: max-content;
-
-    .logo {
-      display: none;
-    }
-  }
-
-  ${device.small} {
-    flex-direction: column;
-    align-items: stretch;
-    max-width: 350px;
-    padding: 15px 0;
-    margin-top: 75px;
-    gap: 6px;
-
-    .links-content {
-      display: none;
-    }
-
-    .download-cv {
-      display: none;
+    ${device.small} {
+      display: flex;
     }
   }
 `;
@@ -108,15 +93,16 @@ export const HamburgerIcon = styled.div`
   padding: 8px 0;
   cursor: pointer;
 
+  &:hover {
+    color: ${theme.primaryColor};
+  }
+
   ${device.small} {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 51; /* Garante que o ícone de fechar fica acima do menu */
 
     svg {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       color: ${theme.lightColor};
     }
   }
@@ -126,17 +112,23 @@ export const NavLinks = styled.ul`
   display: flex;
   align-items: center;
   gap: 20px;
-  list-style: none;
+  z-index: 100;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+  .close-icon {
+    display: none; /* Oculta o ícone de fechar em telas grandes */
+  }
 
   li {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: ${theme.lightColor};
 
     a {
       color: inherit;
       text-decoration: none;
-      font-size: 16px;
+      font-size: 1.2rem;
 
       &:hover {
         color: ${theme.primaryColor};
@@ -145,16 +137,36 @@ export const NavLinks = styled.ul`
     }
   }
 
+  ${device.medium} {
+    display: none; /* Oculta o menu em telas médias e grandes */
+  }
+
   ${device.small} {
-    display: ${({ isopen }) => (isopen ? "flex" : "none")};
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
     width: 100%;
-    padding: 14px 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    transform: translateX(
+      ${({ isopen }) => (isopen ? "0" : "-100%")}
+    ); /* Move para fora da tela se não estiver aberto */
 
-    li {
-      font-size: 18px;
+    .close-icon {
+      display: block;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: ${theme.lightColor};
+
+      &:hover {
+        color: ${theme.primaryColor};
+      }
     }
   }
 `;
@@ -279,7 +291,7 @@ export const Footer = styled.footer`
   }
 
   ${device.small} {
-    padding: 50px;
+    padding: 30px;
 
     h1 {
       margin-top: 70px;
@@ -350,11 +362,6 @@ export const SocialLinks = styled.div`
 
     .icons {
       color: #fff;
-      transition: transform 300ms ease;
-
-      &:hover {
-        transform: scale(1.08);
-      }
     }
   }
 

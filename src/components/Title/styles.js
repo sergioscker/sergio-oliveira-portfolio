@@ -24,9 +24,11 @@ export const H1 = styled.h1`
   width: 100%;
   padding: 22px;
   margin-top: 50px;
-  color: #007bff;
   text-align: center;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+  background: linear-gradient(45deg, #0056b3, #007bff);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 
   ${device.small} {
     font-size: 3rem;

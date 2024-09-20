@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, Element } from "react-scroll";
 
+import { motion } from "framer-motion";
+
 import {
   IoLogoLinkedin,
   IoLogoGithub,
@@ -14,7 +16,8 @@ import H1 from "../../components/Title";
 import { useWindowSizeIcons } from "../../components/windowSizeIcons";
 
 import { PageAboutMe } from "../PageAboutMe";
-import { PageProjects } from "../PageProjects";
+
+import { ProjectsPage } from "../../components/SlideProjects";
 import { PageTechs } from "../PageTechs";
 
 import PhotoProfire from "../../assets/profire-photo.png";
@@ -77,20 +80,25 @@ export function Home() {
       {/* Header Section */}
       <HeaderContainer>
         <Header isopen={isMenuOpen}>
-          {/* Logo */}
           <Link to="home" smooth={true} duration={500} offset={-80}>
             <div className="logo">
               <img src={PhotoProfire} alt="profire" />
             </div>
           </Link>
 
-          {/* Ícone de hambúrguer para telas pequenas */}
-          <HamburgerIcon onClick={toggleMenu}>
-            {isMenuOpen ? <IoClose size={28} /> : <IoMenu size={28} />}
+          <HamburgerIcon isopen={isMenuOpen} onClick={toggleMenu}>
+            {!isMenuOpen ? <IoMenu size={28} /> : ""}
+            {/* Mostra o ícone de hambúrguer quando o menu está fechado */}
           </HamburgerIcon>
 
           {/* Links de navegação, exibidos ou ocultados conforme o estado do menu */}
-          <NavLinks isopen={isMenuOpen}>
+          <NavLinks
+            isopen={isMenuOpen}
+            // target="_blank"
+            // rel="noopener noreferrer"
+          >
+            <IoClose className="close-icon" size={28} onClick={toggleMenu} />
+            {/* Ícone de fechar no menu aberto */}
             {navLinks.map((link) => (
               <li key={link.to}>
                 <Link
@@ -105,6 +113,7 @@ export function Home() {
               </li>
             ))}
           </NavLinks>
+
           <a href={SergioResume} className="download-cv">
             Download Resume
           </a>
@@ -114,24 +123,41 @@ export function Home() {
       {/* Seção HOME */}
       <Element name="home">
         <TopContainer>
-          <div className="top-content">
+          <motion.div
+            className="top-content"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+          >
             <H1>Software Developer</H1>
 
             {/* Links sociais */}
             <SocialLinks>
               {socialLinks.map((social, index) => (
-                <a key={index} href={social.href}>
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  initial="hidden"
+                  animate="visible"
+                  whileHover={{ scale: 1.1 }}
+                  target="_blank" // Abre o link em uma nova aba
+                  rel="noopener noreferrer" // Segurança para prevenir vulnerabilidades
+                >
                   <div className="social-links">
                     <social.icon className="icons" size={iconSize} />
                   </div>
-                </a>
+                </motion.a>
               ))}
             </SocialLinks>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+          >
             <img src={HomeDark} className="home-dark-image" alt="icon" />
-          </div>
+          </motion.div>
         </TopContainer>
       </Element>
 
@@ -142,7 +168,7 @@ export function Home() {
 
       {/* Seção PROJECTS */}
       <Element name="projects">
-        <PageProjects />
+        <ProjectsPage />
       </Element>
 
       {/* Seção SKILLS */}
@@ -157,7 +183,12 @@ export function Home() {
           <div className="developer">
             {/* Links sociais no footer */}
             {socialLinks.map((social, index) => (
-              <a key={index} href={social.href}>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                key={index}
+                href={social.href}
+              >
                 <div className="social-media">
                   <social.icon className="icons" size={45} />
                   <span>{social.label}</span>

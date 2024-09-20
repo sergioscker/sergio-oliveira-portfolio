@@ -9,21 +9,45 @@ const device = {
 
 export const ContainerTools = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(150px, 1fr)
+  ); /* Ajusta o número de colunas conforme o tamanho da tela */
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: center;
+  padding: 50px 20px;
   width: 100%;
-  padding: 120px 0;
-  min-height: 100vh; /* Garante que a seção ocupe pelo menos a altura da viewport */
+  min-height: 100vh;
 
-  /* Media Queries */
+  /* Ajustes para telas grandes */
+  ${device.large} {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2.5rem;
+    padding: 100px 40px;
+  }
+
   ${device.medium} {
-    padding: 40px 0;
-    gap: 1.5rem; /* Diminuir o espaço entre os itens em telas médias */
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(150px, 1fr)
+    ); /* Colunas intermediárias em telas médias */
+    padding: 80px 30px;
+    gap: 2rem;
   }
 
   ${device.small} {
-    padding: 100px 0;
-    margin-top: 80px;
-    gap: 1rem; /* Diminuir o espaço entre os itens em telas pequenas */
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Mostra 2 colunas em telas pequenas */
+    padding: 80px 20px;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr; /* Exibe uma coluna em telas muito pequenas */
+    gap: 1rem;
+    padding: 80px 10px;
   }
 `;
