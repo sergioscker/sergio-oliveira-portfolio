@@ -114,7 +114,6 @@ export const NavLinks = styled.ul`
   gap: 20px;
   z-index: 100;
   transition: transform 0.3s ease;
-  cursor: pointer;
 
   .close-icon {
     display: none; /* Oculta o ícone de fechar em telas grandes */

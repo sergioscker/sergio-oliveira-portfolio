@@ -64,7 +64,7 @@ export const ProjectsPage = () => {
         { icon: <IoLogoDocker size={40} /> },
         { icon: <TbBrandMongodb size={40} /> },
       ],
-      deployUrl: "https://example.com/tech-solutions",
+      deployUrl: "https://burguershop-eight.vercel.app",
       repoUrl: "https://github.com/sergioliveira-developer/DevBurger",
     },
     {

@@ -92,11 +92,7 @@ export function Home() {
           </HamburgerIcon>
 
           {/* Links de navegação, exibidos ou ocultados conforme o estado do menu */}
-          <NavLinks
-            isopen={isMenuOpen}
-            // target="_blank"
-            // rel="noopener noreferrer"
-          >
+          <NavLinks isopen={isMenuOpen}>
             <IoClose className="close-icon" size={28} onClick={toggleMenu} />
             {/* Ícone de fechar no menu aberto */}
             {navLinks.map((link) => (
