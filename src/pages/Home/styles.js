@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// Variáveis de tema para cores e espaçamentos
 const theme = {
   primaryColor: "#4a8fff",
   darkColor: " #1f1f1f",
@@ -57,11 +56,13 @@ export const Header = styled.header`
   z-index: 50;
 
   ${device.medium} {
+    justify-content: space-around;
     width: 95%;
     padding: 25px;
   }
 
   ${device.small} {
+    justify-content: space-around;
     width: 90%;
     border-radius: 80px;
   }
@@ -110,21 +111,12 @@ export const HamburgerIcon = styled.div`
   padding: 8px 0;
   cursor: pointer;
 
-  &:hover {
-    color: ${theme.primaryColor};
-  }
-
-  ${device.medium} {
-    display: none;
-  }
-
   ${device.small} {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    color: ${theme.primaryColor};
 
-    svg {
-      width: 28px;
-      height: 28px;
+    &:hover {
       color: ${theme.lightColor};
     }
   }
