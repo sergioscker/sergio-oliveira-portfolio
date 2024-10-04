@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, Element } from "react-scroll";
 
 import { motion } from "framer-motion";
@@ -37,7 +37,7 @@ import {
 export function Home() {
   const { width } = useWindowSizeIcons();
   const iconSize = width > 768 ? 50 : 32; // Ajuste do tamanho dos ícones baseado na largura da tela
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar o menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
     { name: "HOME", to: "home" },
@@ -72,21 +72,31 @@ export function Home() {
   ];
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen); // Função para abrir/fechar o menu
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // animations
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
   };
 
   return (
     <>
       {/* Header Section */}
       <HeaderContainer>
-        <Header isopen={isMenuOpen}>
+        <Header $isopen={isMenuOpen}>
           <Link to="home" smooth={true} duration={500} offset={-80}>
             <div className="logo">
               <img src={PhotoProfire} alt="profire" />
             </div>
           </Link>
 
-          <HamburgerIcon isopen={isMenuOpen} onClick={toggleMenu}>
+          <HamburgerIcon $isopen={isMenuOpen} onClick={toggleMenu}>
             {!isMenuOpen ? <IoMenu size={28} /> : ""}
             {/* Mostra o ícone de hambúrguer quando o menu está fechado */}
           </HamburgerIcon>
@@ -121,9 +131,10 @@ export function Home() {
         <TopContainer>
           <motion.div
             className="top-content"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.5 }}
           >
             <H1>Software Developer</H1>
 
@@ -133,11 +144,12 @@ export function Home() {
                 <motion.a
                   key={index}
                   href={social.href}
+                  variants={cardVariants}
                   initial="hidden"
-                  animate="visible"
+                  whileInView="visible"
                   whileHover={{ scale: 1.1 }}
-                  target="_blank" // Abre o link em uma nova aba
-                  rel="noopener noreferrer" // Segurança para prevenir vulnerabilidades
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <div className="social-links">
                     <social.icon className="icons" size={iconSize} />
@@ -148,9 +160,9 @@ export function Home() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
+            initial="hidden"
+            variants={cardVariants}
+            whileInView="visible"
           >
             <img src={HomeDark} className="home-dark-image" alt="icon" />
           </motion.div>
@@ -176,8 +188,8 @@ export function Home() {
       <Element name="contact">
         <Footer>
           <h1>Contact</h1>
+
           <div className="developer">
-            {/* Links sociais no footer */}
             {socialLinks.map((social, index) => (
               <a
                 target="_blank"
@@ -191,9 +203,9 @@ export function Home() {
                 </div>
               </a>
             ))}
-
-            <p> ©2024 Developed by Sérgio Oliveira.</p>
           </div>
+
+          <p> ©2024 Developed by Sérgio Oliveira.</p>
         </Footer>
       </Element>
     </>

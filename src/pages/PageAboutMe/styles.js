@@ -11,7 +11,7 @@ export const AboutContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 80vh; /* Garante que a seção ocupe pelo menos a altura da viewport */
+  min-height: 100vh; /* Garante que a seção ocupe pelo menos a altura da viewport */
 
   div {
     display: flex;
@@ -21,9 +21,11 @@ export const AboutContainer = styled.div`
     h1 {
       font-size: 2.5rem;
       text-align: left;
-      color: #007bff;
       font-weight: bold;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      background: linear-gradient(45deg, #0056b3, #007bff);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     }
 
     .text {
@@ -46,6 +48,7 @@ export const AboutContainer = styled.div`
 
       .text {
         font-size: 16px;
+        text-align: center;
       }
     }
 

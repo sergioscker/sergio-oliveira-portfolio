@@ -9,15 +9,17 @@
 h1 {
 	font-size: 2.5rem;
 	margin-bottom: 3rem;
-	color: #007bff;
-	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+	background: linear-gradient(45deg, #0288d1, #007bff);
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .divTechs {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 2rem;
-	padding: 56px 0;
+	padding: 48px 0;
 	justify-content: center;
 
 }
@@ -29,12 +31,10 @@ h1 {
 	justify-content: center;
 	width: 8.5rem;
 	height: 8.5rem;
-	background-color: #181818;
-	box-shadow: 0px -2px 34px 1px rgba(0, 0, 0, 0.55);
-	gap: 1rem;
-	color: #fff;
+	box-shadow: 0px -2px 34px 1px rgba(0, 0, 0, 0.20);
+	background: linear-gradient(180deg, #0288d1, #01579b);
+	color: #ccc;
 	transition: transform 0.3s ease;
-	/* Suaviza o efeito de escala */
 
 	&:hover {
 		transform: scale(1.1);
@@ -42,13 +42,8 @@ h1 {
 	}
 }
 
-.icon {
-	width: 3rem;
-	height: 3rem;
-}
-
 .techName {
-	font-size: 1rem;
+	font-size: 18px;
 }
 
 @media (max-width: 1200px) {
@@ -73,9 +68,11 @@ h1 {
 }
 
 @media (max-width: 768px) {
+
+
+
 	.divTechs {
 		gap: 1rem;
-
 	}
 
 	.techs {
@@ -83,12 +80,7 @@ h1 {
 		height: 6rem;
 	}
 
-	.icon {
-		width: 2rem;
-		height: 2rem;
-	}
-
 	.techName {
-		font-size: 0.8rem;
+		font-size: 16px;
 	}
 }

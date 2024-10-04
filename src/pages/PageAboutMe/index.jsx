@@ -1,43 +1,67 @@
+import { motion } from "framer-motion";
 import { MainContainer } from "../Home/styles";
 import { AboutContainer } from "./styles";
 
 export const PageAboutMe = () => {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 }, // Estado inicial
+    visible: { opacity: 1, y: 0 }, // Estado final
+  };
+
   return (
     <AboutContainer>
       <MainContainer>
-        <div>
-          <h1>About me</h1>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeInUp}
+          transition={{ duration: 0.8 }}
+        >
+          <h1>About Me</h1>
 
-          <h5 className="text">
-            Olá, sou Sérgio Oliveira, um entusiasta de tecnologia em início de
-            carreira como Desenvolvedor de Software. Brasileiro, que há 2 anos
-            trocou o clima quente do Rio de Janeiro pelo inverno Europeu. Embora
-            ainda esteja dando meus primeiros passos nesse universo, minha
-            paixão por aprender e superar desafios é o que me impulsiona todos
-            os dias.
-          </h5>
+          <motion.h5
+            className="text"
+            variants={fadeInUp}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Olá, sou Sérgio Oliveira, um Desenvolvedor de Software em início de
+            carreira, que trocou o calor vibrante do Rio de Janeiro pelo inverno
+            europeu em busca de novas oportunidades. Sou apaixonado por
+            tecnologia e inovação, e tenho me aprofundado em JavaScript,
+            React.js e Node.js, buscando sempre o aperfeiçoamento contínuo.
+          </motion.h5>
 
-          <h5 className="text">
-            Recentemente, comecei a explorar o mundo do desenvolvimento web, com
-            foco em <span>JavaScript, React.js e Node.js</span>. Estou
-            constantemente em busca de novos conhecimentos e adoro mergulhar em
-            projetos que me façam sair da zona de conforto, pois acredito que é
-            através dos desafios que realmente crescemos e nos tornamos melhores
-            profissionais. Nos últimos meses, desenvolvi alguns projetos no
-            GitHub que me ajudaram a aplicar na prática os conceitos que venho
-            estudando. Um deles foi este portfólio pessoal, onde criei todo o
-            código utilizando ReactJS, demonstrando minha capacidade de
-            construir interfaces modernas e responsivas.
-          </h5>
+          <motion.h5
+            className="text"
+            variants={fadeInUp}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            Nos últimos meses, me dediquei ao desenvolvimento de diversos
+            projetos no GitHub, onde pude aplicar na prática os conhecimentos
+            adquiridos. Um dos meus projetos mais significativos é este
+            portfólio pessoal, que desenvolvi completamente em ReactJS. Este
+            trabalho não apenas demonstra minha capacidade de criar interfaces
+            modernas e responsivas, mas também reflete meu comprometimento com a
+            experiência do usuário e a qualidade do código. Acredito firmemente
+            que a tecnologia tem o poder de transformar vidas e negócios, e
+            estou entusiasmado em fazer parte dessa mudança. Minha meta é
+            encontrar uma oportunidade no mercado de trabalho que me permita
+            aplicar o que aprendi, ao mesmo tempo em que aprendo com
+            profissionais experientes e colaboro para o crescimento da equipe.
+          </motion.h5>
 
-          <h5 className="text">
-            Tenho me dedicado bastante em projetos com ênfase na rotina
-            profissional de um programador no mercado de trabalho para alcançar
-            uma oportunidade de demonstrar com trabalho árduo o quanto posso
-            evoluir ainda mais meus conhecimentos e colaborar como equipe numa
-            empresa.
-          </h5>
-        </div>
+          <motion.h5
+            className="text"
+            variants={fadeInUp}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            Se você está à procura de um profissional motivado, com sede de
+            conhecimento e uma verdadeira paixão pela tecnologia, adoraria a
+            oportunidade de conversar sobre como posso agregar valor à sua
+            equipe. Vamos juntos transformar ideias em realidade e criar
+            soluções impactantes!
+          </motion.h5>
+        </motion.div>
       </MainContainer>
     </AboutContainer>
   );

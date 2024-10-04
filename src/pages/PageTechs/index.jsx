@@ -6,16 +6,18 @@ import {
   IoLogoReact,
   IoLogoSass,
   IoLogoDocker,
+  IoLogoFigma,
 } from "react-icons/io5";
 
 import { FaGitAlt } from "react-icons/fa6";
 import { TbBrandVite, TbBrandTypescript } from "react-icons/tb";
 
-import { ContainerTools } from "./styles";
 import { useWindowSizeIcons } from "../../components/windowSizeIcons";
 import { Techs } from "../../components/Techs/Techs";
 
 import { MainContainer } from "../Home/styles";
+
+import { ContainerTools } from "./styles";
 
 export const PageTechs = () => {
   const { width } = useWindowSizeIcons();
@@ -32,6 +34,7 @@ export const PageTechs = () => {
     { icon: <TbBrandVite size={iconSize} />, name: "Vite" },
     { icon: <FaGitAlt size={iconSize} />, name: "Git" },
     { icon: <IoLogoDocker size={iconSize} />, name: "Docker" },
+    { icon: <IoLogoFigma size={iconSize} />, name: "Figma" },
   ];
 
   return (

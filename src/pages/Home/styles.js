@@ -35,6 +35,10 @@ export const HeaderContainer = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 12px;
+
+  ${device.medium} {
+    padding: 12px;
+  }
 `;
 
 export const Header = styled.header`
@@ -52,6 +56,11 @@ export const Header = styled.header`
   position: fixed;
   z-index: 50;
 
+  ${device.medium} {
+    width: 95%;
+    padding: 25px;
+  }
+
   ${device.small} {
     width: 90%;
     border-radius: 80px;
@@ -62,8 +71,12 @@ export const Header = styled.header`
     height: ${theme.iconSize};
     border-radius: 50%;
 
+    ${device.medium} {
+      display: none;
+    }
+
     ${device.small} {
-      display: none; /* Oculta a foto de perfil em telas pequenas */
+      display: none;
     }
   }
 
@@ -82,6 +95,10 @@ export const Header = styled.header`
       color: ${theme.darkColor};
     }
 
+    ${device.medium} {
+      padding: 10px;
+    }
+
     ${device.small} {
       display: flex;
     }
@@ -97,8 +114,13 @@ export const HamburgerIcon = styled.div`
     color: ${theme.primaryColor};
   }
 
+  ${device.medium} {
+    display: none;
+  }
+
   ${device.small} {
     display: flex;
+    justify-content: space-between;
 
     svg {
       width: 28px;
@@ -134,10 +156,6 @@ export const NavLinks = styled.ul`
         transition: color 0.3s ease;
       }
     }
-  }
-
-  ${device.medium} {
-    display: none; /* Oculta o menu em telas médias e grandes */
   }
 
   ${device.small} {
@@ -194,13 +212,9 @@ export const TopContainer = styled.div`
   }
 
   ${device.medium} {
+    flex-direction: column;
     padding: 40px 0;
     min-height: 50vh;
-
-    .home-dark-image {
-      max-width: 100%;
-      padding: 0 15px;
-    }
   }
 
   ${device.small} {
@@ -209,7 +223,6 @@ export const TopContainer = styled.div`
 
     .home-dark-image {
       padding: 20px;
-      max-width: 100%;
     }
   }
 `;
@@ -220,21 +233,24 @@ export const Footer = styled.footer`
   justify-content: center;
   align-items: center;
   gap: 12px;
-  padding: 80px;
   color: ${theme.lightColor};
-  min-height: 100vh;
+  min-height: 80vh;
+  width: 100%;
+  padding: 100px 0;
 
   h1 {
-    margin-top: 50px;
     font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: #007bff;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    background: linear-gradient(45deg, #0056b3, #007bff);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   }
 
   .developer {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 
     .social-media,
     span,
@@ -263,16 +279,19 @@ export const Footer = styled.footer`
         }
       }
     }
+  }
 
-    p {
-      font-size: 32px;
-      color: rgba(255, 255, 255, 0.6);
+  p {
+    font-size: 26px;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+
+    ${device.small} {
+      text-align: center;
     }
   }
 
   ${device.medium} {
-    padding: 15px;
-
     .developer {
       font-size: 1.2rem;
 

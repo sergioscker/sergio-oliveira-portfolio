@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
 
 import TechSolution from "../../assets/tech-solutions.png";
 import BurgerShop from "../../assets/dev-burger.png";
@@ -10,7 +11,6 @@ import JoKenPo from "../../assets/jo-ken-po.png";
 import MenuBurgers from "../../assets/map-reduce-filter.png";
 import EasyShopping from "../../assets/easy-shopping.png";
 
-// Import icons
 import {
   IoLogoReact,
   IoLogoCss3,
@@ -29,13 +29,12 @@ import {
   CardContainer,
   Container,
   GithubButton,
-  Indicator,
-  IndicatorContainer,
   ProjectButton,
   Tech,
   TechContainer,
   Title,
 } from "./styles";
+
 import { MainContainer } from "../../pages/Home/styles";
 
 export const ProjectsPage = () => {
@@ -53,7 +52,6 @@ export const ProjectsPage = () => {
       deployUrl: "https://tech-solutions-kappa.vercel.app/",
       repoUrl: "https://github.com/sergioliveira-developer/tech-solutions",
     },
-
     {
       id: 2,
       title: "Burger Shop",
@@ -156,31 +154,55 @@ export const ProjectsPage = () => {
     },
   ];
 
-  const cardsPerView = 4; // Número de cards visíveis
-  const totalCards = cards.length;
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const sliderRef = useRef(null);
+  const cardsContainerRef = useRef(null);
 
-  const handleScroll = (direction) => {
-    const cardWidth = sliderRef.current.offsetWidth / cardsPerView;
-    let nextIndex = currentIndex;
-
-    // Corrigir o índice para navegação
-    if (direction === "right") {
-      nextIndex = Math.min(currentIndex + 1, totalCards - cardsPerView);
-    } else if (direction === "left") {
-      nextIndex = Math.max(currentIndex - 1, 0);
+  const scrollLeft = () => {
+    if (cardsContainerRef.current) {
+      cardsContainerRef.current.scrollBy({
+        left: -300,
+        behavior: "smooth",
+      });
     }
-
-    sliderRef.current.scrollLeft = nextIndex * cardWidth;
-    setCurrentIndex(nextIndex);
   };
 
-  useEffect(() => {
-    const slider = sliderRef.current;
-    const cardWidth = slider.offsetWidth / cardsPerView;
-    slider.scrollLeft = currentIndex * cardWidth;
-  }, [currentIndex]);
+  const scrollRight = () => {
+    if (cardsContainerRef.current) {
+      cardsContainerRef.current.scrollBy({
+        left: 300,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  // Funções para controle de arrasto
+  const handleMouseDown = (e) => {
+    e.preventDefault();
+    const startX = e.pageX - cardsContainerRef.current.offsetLeft;
+    const scrollLeft = cardsContainerRef.current.scrollLeft;
+
+    const onMouseMove = (e) => {
+      const x = e.pageX - cardsContainerRef.current.offsetLeft;
+      const walk = (x - startX) * 1.5; // Multiplicador para ajustar a sensibilidade do arrasto
+      cardsContainerRef.current.scrollLeft = scrollLeft - walk;
+    };
+
+    const onMouseUp = () => {
+      document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseup", onMouseUp);
+    };
+
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
 
   return (
     <MainContainer>
@@ -188,70 +210,72 @@ export const ProjectsPage = () => {
 
       <ButtonContent>
         <div className="arrow-button">
-          <ArrowButton
-            aria-label="Scroll left"
-            onClick={() => handleScroll("left")}
-          >
+          <ArrowButton aria-label="Scroll left" onClick={scrollLeft}>
             {"<"}
           </ArrowButton>
-          <ArrowButton
-            aria-label="Scroll right"
-            onClick={() => handleScroll("right")}
-          >
+          <ArrowButton aria-label="Scroll right" onClick={scrollRight}>
             {">"}
           </ArrowButton>
         </div>
       </ButtonContent>
 
       <Container>
-        <CardContainer ref={sliderRef}>
-          {cards.map((card, index) => (
-            <Card key={index}>
-              <img
-                src={card.image}
-                alt={card.title}
-                className="card-image"
-                loading="lazy"
-              />
-              <h3>{card.title}</h3>
-              <TechContainer>
-                {card.techs.map((tech, techIndex) => (
-                  <Tech key={techIndex}>{tech.icon}</Tech>
-                ))}
-              </TechContainer>
-              <ButtonContainer>
-                <ProjectButton
-                  aria-label={`Ver projeto ${card.title}`}
-                  onClick={() =>
-                    window.open(card.deployUrl, "_blank", "noopener noreferrer")
-                  }
-                >
-                  Ver Projeto
-                </ProjectButton>
-                <GithubButton
-                  aria-label={`Ver repositório ${card.title}`}
-                  onClick={() =>
-                    window.open(card.repoUrl, "_blank", "noopener noreferrer")
-                  }
-                >
-                  Ver Repositório
-                </GithubButton>
-              </ButtonContainer>
-            </Card>
+        <CardContainer
+          ref={cardsContainerRef}
+          onMouseDown={handleMouseDown} // Evento de arrasto
+          style={{
+            display: "flex",
+            overflowX: "scroll",
+            scrollBehavior: "smooth",
+          }}
+        >
+          {cards.map((card) => (
+            <motion.div
+              key={card.id}
+              className="card-wrapper"
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.5 }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <Card>
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="card-image"
+                  loading="lazy"
+                />
+                <h3>{card.title}</h3>
+                <TechContainer>
+                  {card.techs.map((tech, index) => (
+                    <Tech key={index}>{tech.icon}</Tech>
+                  ))}
+                </TechContainer>
+                <ButtonContainer>
+                  <ProjectButton
+                    onClick={() =>
+                      window.open(
+                        card.deployUrl,
+                        "_blank",
+                        "noopener noreferrer"
+                      )
+                    }
+                  >
+                    View Project
+                  </ProjectButton>
+                  <GithubButton
+                    onClick={() =>
+                      window.open(card.repoUrl, "_blank", "noopener noreferrer")
+                    }
+                  >
+                    View Repository
+                  </GithubButton>
+                </ButtonContainer>
+              </Card>
+            </motion.div>
           ))}
         </CardContainer>
-
-        <IndicatorContainer>
-          {Array.from({ length: totalCards - cardsPerView + 1 }).map(
-            (_, idx) => (
-              <Indicator
-                key={idx}
-                isActive={currentIndex === idx}
-                onClick={() => setCurrentIndex(idx)}
-              />
-            )
-          )}
-        </IndicatorContainer>
       </Container>
     </MainContainer>
   );

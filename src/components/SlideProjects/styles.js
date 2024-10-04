@@ -1,5 +1,25 @@
 import styled from "styled-components";
 
+export const Title = styled.h3`
+  padding: 80px 40px;
+  margin-top: 40px;
+  font-size: 48px;
+  background: linear-gradient(45deg, #0288d1, #007bff);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    font-size: 45px;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 30px;
+    text-align: center;
+  }
+`;
+
 export const ButtonContent = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -20,6 +40,7 @@ export const ButtonContent = styled.div`
 export const Container = styled.div`
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -32,13 +53,15 @@ export const CardContainer = styled.div`
   gap: 15px;
   width: 100%;
   padding: 20px;
-  overflow-x: scroll;
+  overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  overflow: hidden;
+
+  /* Estilos para esconder a barra de rolagem */
+  -ms-overflow-style: none; /* Para Internet Explorer e Edge */
+  scrollbar-width: none; /* Para Firefox */
 
   ::-webkit-scrollbar {
-    display: none; /* Hide scrollbar */
+    display: none; /* Para Chrome, Safari e Opera */
   }
 
   @media (max-width: 768px) {
@@ -52,7 +75,7 @@ export const Card = styled.div`
   align-items: center;
   justify-content: center;
   gap: 12px;
-  flex: 0 0 auto; /* Prevent card shrinkage */
+  flex: 0 0 auto;
   background-color: #181818;
   border-radius: 10px;
   padding: 15px;
@@ -87,22 +110,6 @@ export const Card = styled.div`
     width: 100%;
     padding: 12px;
     gap: 8px;
-  }
-`;
-
-export const Title = styled.h3`
-  padding: 80px 40px;
-  margin-top: 40px;
-  font-size: 48px;
-  color: #007bff;
-  text-align: center;
-
-  @media (max-width: 768px) {
-    font-size: 36px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 30px;
   }
 `;
 
@@ -176,12 +183,10 @@ export const ArrowButton = styled.button`
 `;
 
 export const IndicatorContainer = styled.div`
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
+  justify-content: center;
   gap: 8px;
+  margin-top: 20px;
 `;
 
 export const Indicator = styled.div`
