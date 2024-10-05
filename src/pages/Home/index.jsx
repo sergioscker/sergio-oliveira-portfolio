@@ -89,22 +89,22 @@ export function Home() {
     <>
       {/* Header Section */}
       <HeaderContainer>
-        <Header $isopen={isMenuOpen}>
+        <Header isopen={isMenuOpen ? "true" : undefined}>
           <Link to="home" smooth={true} duration={500} offset={-80}>
             <div className="logo">
               <img src={PhotoProfire} alt="profire" />
             </div>
           </Link>
 
-          <HamburgerIcon $isopen={isMenuOpen} onClick={toggleMenu}>
-            {!isMenuOpen ? <IoMenu size={28} /> : ""}
-            {/* Mostra o ícone de hambúrguer quando o menu está fechado */}
+          <HamburgerIcon
+            isopen={isMenuOpen ? "true" : undefined}
+            onClick={toggleMenu}
+          >
+            {!isMenuOpen ? <IoMenu size={30} /> : ""}
           </HamburgerIcon>
 
-          {/* Links de navegação, exibidos ou ocultados conforme o estado do menu */}
-          <NavLinks $isopen={isMenuOpen}>
-            <IoClose className="close-icon" size={28} onClick={toggleMenu} />
-            {/* Ícone de fechar no menu aberto */}
+          <NavLinks isopen={isMenuOpen ? "true" : undefined}>
+            <IoClose className="close-icon" size={30} onClick={toggleMenu} />
             {navLinks.map((link) => (
               <li key={link.to}>
                 <Link

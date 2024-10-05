@@ -28,8 +28,7 @@ export const PageAboutMe = () => {
             carreira, que trocou o calor vibrante do Rio de Janeiro pelo inverno
             europeu em busca de novas oportunidades. Sou apaixonado por
             tecnologia e inovação, e tenho me aprofundado em devenvolvimento
-            full stack com ênfase em
-            <span>JavaScript, React.js, TypeScript, Node.js...</span> buscando
+            full stack com ênfase em <span>JavaScript, React.js, TypeScript, Node.js...</span> buscando
             sempre o aperfeiçoamento contínuo.
           </motion.h5>
 

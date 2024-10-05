@@ -6,4 +6,9 @@ export const ContainerTools = styled.div`
   align-items: center;
   width: 100%;
   min-height: 100vh;
+
+  @media (max-width: 480px) {
+    padding: 60px 0;
+   
+  }
 `;

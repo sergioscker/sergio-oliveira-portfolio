@@ -32,6 +32,10 @@ export const ButtonContent = styled.div`
     gap: 12px;
   }
 
+  @media (max-width: 780px) {
+    justify-content: center;
+  }
+
   @media (max-width: 480px) {
     justify-content: center;
   }
@@ -50,10 +54,12 @@ export const Container = styled.div`
 
 export const CardContainer = styled.div`
   display: flex;
+  align-items: center;
   gap: 15px;
   width: 100%;
   padding: 20px;
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
 
   /* Estilos para esconder a barra de rolagem */
@@ -62,10 +68,6 @@ export const CardContainer = styled.div`
 
   ::-webkit-scrollbar {
     display: none; /* Para Chrome, Safari e Opera */
-  }
-
-  @media (max-width: 768px) {
-    padding: 10px;
   }
 `;
 
@@ -102,14 +104,13 @@ export const Card = styled.div`
     text-align: center;
   }
 
-  @media (max-width: 768px) {
-    width: 200px;
-  }
-
   @media (max-width: 480px) {
-    width: 100%;
     padding: 12px;
     gap: 8px;
+
+    h3 {
+      font-size: 22px;
+    }
   }
 `;
 

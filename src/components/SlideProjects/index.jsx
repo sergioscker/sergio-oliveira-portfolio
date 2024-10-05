@@ -237,7 +237,6 @@ export const ProjectsPage = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.5 }}
-              whileHover={{ scale: 1.05 }}
             >
               <Card>
                 <img
