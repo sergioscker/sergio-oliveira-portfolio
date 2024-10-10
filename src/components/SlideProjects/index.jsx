@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
 import { motion } from "framer-motion";
 
 import TechSolution from "../../assets/tech-solutions.png";
-import BurgerShop from "../../assets/dev-burger.png";
+import BurgerShop from "../../assets/burger-shop.png";
 import FinantialControl from "../../assets/dev-bills.png";
 import UsersOffice from "../../assets/users-office.png";
 import MarioBross from "../../assets/mario-bross.png";
@@ -26,7 +27,6 @@ import {
   ButtonContainer,
   ButtonContent,
   Card,
-  CardContainer,
   Container,
   GithubButton,
   ProjectButton,
@@ -155,11 +155,23 @@ export const ProjectsPage = () => {
   ];
 
   const cardsContainerRef = useRef(null);
+  const [maxScrollWidth, setMaxScrollWidth] = useState(0);
+  const [scrollPos, setScrollPos] = useState(0);
+
+  useEffect(() => {
+    if (cardsContainerRef.current) {
+      const scrollWidth = cardsContainerRef.current.scrollWidth;
+      const clientWidth = cardsContainerRef.current.clientWidth;
+      setMaxScrollWidth(scrollWidth - clientWidth);
+    }
+  }, []);
 
   const scrollLeft = () => {
     if (cardsContainerRef.current) {
-      cardsContainerRef.current.scrollBy({
-        left: -300,
+      const newScrollPos = Math.max(scrollPos - 300, 0);
+      setScrollPos(newScrollPos);
+      cardsContainerRef.current.scrollTo({
+        left: newScrollPos,
         behavior: "smooth",
       });
     }
@@ -167,41 +179,13 @@ export const ProjectsPage = () => {
 
   const scrollRight = () => {
     if (cardsContainerRef.current) {
-      cardsContainerRef.current.scrollBy({
-        left: 300,
+      const newScrollPos = Math.min(scrollPos + 300, maxScrollWidth);
+      setScrollPos(newScrollPos);
+      cardsContainerRef.current.scrollTo({
+        left: newScrollPos,
         behavior: "smooth",
       });
     }
-  };
-
-  // Funções para controle de arrasto
-  const handleMouseDown = (e) => {
-    e.preventDefault();
-    const startX = e.pageX - cardsContainerRef.current.offsetLeft;
-    const scrollLeft = cardsContainerRef.current.scrollLeft;
-
-    const onMouseMove = (e) => {
-      const x = e.pageX - cardsContainerRef.current.offsetLeft;
-      const walk = (x - startX) * 1.5; // Multiplicador para ajustar a sensibilidade do arrasto
-      cardsContainerRef.current.scrollLeft = scrollLeft - walk;
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
   };
 
   return (
@@ -220,22 +204,18 @@ export const ProjectsPage = () => {
       </ButtonContent>
 
       <Container>
-        <CardContainer
+        <motion.div
           ref={cardsContainerRef}
-          onMouseDown={handleMouseDown} // Evento de arrasto
-          style={{
-            display: "flex",
-            overflowX: "scroll",
-            scrollBehavior: "smooth",
-          }}
+          className="card-container"
+          dragConstraints={cardsContainerRef}
+          whileTap={{ cursor: "grabbing" }}
         >
           {cards.map((card) => (
             <motion.div
               key={card.id}
-              className="card-wrapper"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: false, amount: 0.5 }}
             >
               <Card>
@@ -274,7 +254,7 @@ export const ProjectsPage = () => {
               </Card>
             </motion.div>
           ))}
-        </CardContainer>
+        </motion.div>
       </Container>
     </MainContainer>
   );

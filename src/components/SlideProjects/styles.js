@@ -50,26 +50,29 @@ export const Container = styled.div`
   width: 100%;
   padding: 20px;
   color: white;
-`;
 
-export const CardContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  width: 100%;
-  padding: 20px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
+  .card-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    cursor: grab;
 
-  /* Estilos para esconder a barra de rolagem */
-  -ms-overflow-style: none; /* Para Internet Explorer e Edge */
-  scrollbar-width: none; /* Para Firefox */
+    /* Estilos para esconder a barra de rolagem */
+    -ms-overflow-style: none; /* Para Internet Explorer e Edge */
+    scrollbar-width: none; /* Para Firefox */
 
-  ::-webkit-scrollbar {
-    display: none; /* Para Chrome, Safari e Opera */
+    ::-webkit-scrollbar {
+      display: none; /* Para Chrome, Safari e Opera */
+    }
   }
 `;
+
+// export const CardContainer = styled.div``;
 
 export const Card = styled.div`
   display: flex;
@@ -86,6 +89,7 @@ export const Card = styled.div`
   scroll-snap-align: center;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s;
+  overflow: hidden;
 
   &:hover {
     transform: scale(1.05);
