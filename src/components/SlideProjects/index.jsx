@@ -49,7 +49,7 @@ export const ProjectsPage = () => {
         { icon: <IoLogoCss3 size={40} /> },
         { icon: <IoLogoHtml5 size={40} /> },
       ],
-      deployUrl: "https://tech-solutions-kappa.vercel.app/",
+      deployUrl: "https://tech-solutions-kappa.vercel.app",
       repoUrl: "https://github.com/sergioliveira-developer/tech-solutions",
     },
     {
@@ -210,9 +210,9 @@ export const ProjectsPage = () => {
           dragConstraints={cardsContainerRef}
           whileTap={{ cursor: "grabbing" }}
         >
-          {cards.map((card) => (
+          {cards.map((card, index) => (
             <motion.div
-              key={card.id}
+              key={index}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
@@ -231,6 +231,7 @@ export const ProjectsPage = () => {
                     <Tech key={index}>{tech.icon}</Tech>
                   ))}
                 </TechContainer>
+
                 <ButtonContainer>
                   <ProjectButton
                     onClick={() =>
