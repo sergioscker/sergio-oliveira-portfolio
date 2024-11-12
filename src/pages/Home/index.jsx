@@ -3,6 +3,7 @@ import { Link, Element } from "react-scroll";
 
 import { motion } from "framer-motion";
 
+// icons
 import {
   IoLogoLinkedin,
   IoLogoGithub,
@@ -12,18 +13,21 @@ import {
   IoMail,
 } from "react-icons/io5";
 
+// components
 import H1 from "../../components/Title";
 import { useWindowSizeIcons } from "../../components/windowSizeIcons";
+import { ProjectsPage } from "../../components/SlideProjects";
 
+// pages
+import { PageTechs } from "../PageTechs";
 import { PageAboutMe } from "../PageAboutMe";
 
-import { ProjectsPage } from "../../components/SlideProjects";
-import { PageTechs } from "../PageTechs";
-
-import PhotoProfire from "../../assets/profire-photo.png";
+// archives
+import PhotoProfire from "../../assets/profire.jpg";
 import HomeDark from "../../assets/homeDark.png";
-import SergioResume from "../../assets/sergio-resume.pdf";
+import SergioResume from "../../assets/resume.pdf";
 
+// styles
 import {
   Header,
   HeaderContainer,
@@ -71,6 +75,7 @@ export function Home() {
     },
   ];
 
+  // control menu close
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
