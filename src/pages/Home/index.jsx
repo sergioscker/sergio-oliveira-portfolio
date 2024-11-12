@@ -23,7 +23,7 @@ import { PageTechs } from "../PageTechs";
 import { PageAboutMe } from "../PageAboutMe";
 
 // archives
-import PhotoProfire from "../../assets/profire.jpg";
+import PhotoProfire from "../../assets/profile.webp";
 import HomeDark from "../../assets/homeDark.png";
 import SergioResume from "../../assets/resume.pdf";
 
